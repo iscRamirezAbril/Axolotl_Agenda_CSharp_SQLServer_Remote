@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient; // Librería que nos permitirá conectarnos a las bases de dato
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
