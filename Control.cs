@@ -170,7 +170,7 @@ namespace ProyectoFinal
         }
 
         // <--- Método #4: Recuperación de contraseña. ---> //
-        public string ctrlRecoverPassword(string username, string email, string emailpass){ // Recibe como parámetros 3 variables de tipo "string", que son "username", "email", "emailpass".
+        public string ctrlRecoverPassword(string username, string email){ // Recibe como parámetros 2 variables de tipo "string", que son "username" e "email".
             Model model = new Model(); // Se crea una instancia de la clase "Model".
 
             // Declaración de variable. Esta almacenará los mensajes de error que correspondan.
@@ -179,7 +179,7 @@ namespace ProyectoFinal
 
             // <--- Validación #1: Verificar que los campos estén vacíos. ---> //
             // Condición que solo es válida sí y sólo sí el usuario no ha insertado su "username" y "password".
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(emailpass))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email))
                 errorMessage = "Debe llenar todos los campos..."; // Mensaje de error.
 
             // <--- Validación #2: Traer datos de Sql a mi consulta. ---> //

@@ -51,33 +51,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #3: "Enter". ---> //
-        /*
-           Este evento sólo se "activará" si el cursor del Mouse se encuentra dentro de la 
-           caja de texto.
-        */
-        private void txtEmailPass_Enter(object sender, EventArgs e) {
-            if (txtEmailPass.Text == "EMAIL PASSWORD") {
-                txtEmailPass.Text = ""; // Texto a mostrar.
-                txtEmailPass.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
-                txtEmailPass.UseSystemPasswordChar = true; // Esta condición permite que la contraseña no se visualice.
-            }
-        }
-
-        // <--- Evento #4: "Leave". ---> //
-        /*
-           Este evento sólo se "activará" cuando el cursor del Mouse se encuentre fuera de
-           la caja de texto.
-        */
-        private void txtEmailPass_Leave(object sender, EventArgs e) {
-            if (txtEmailPass.Text == "") {
-                txtEmailPass.Text = "EMAIL PASSWORD"; // Texto a mostrar.
-                txtEmailPass.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
-                txtEmailPass.UseSystemPasswordChar = false; // Esta condición permite que la contraseña se visualice.
-            }
-        }
-
-        // <--- Evento #5: "MouseDown". ---> //
+        // <--- Evento #3: "MouseDown". ---> //
         /*
           Este evento nos permitirá mover el formulario desde el panel.
         */
@@ -87,7 +61,7 @@ namespace ProyectoFinal
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        // <--- Evento #6: "MouseDown". ---> //
+        // <--- Evento #4: "MouseDown". ---> //
         /*
           Este evento nos permitirá mover el formulario desde el panel.
         */
@@ -97,7 +71,7 @@ namespace ProyectoFinal
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        // <--- Evento #7: "Enter". ---> //
+        // <--- Evento #5: "Enter". ---> //
         /*
            Este evento sólo se "activará" si el cursor del Mouse se encuentra dentro de la 
            caja de texto.
@@ -109,7 +83,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #8: "Leave". ---> //
+        // <--- Evento #6: "Leave". ---> //
         /*
            Este evento sólo se "activará" cuando el cursor del Mouse se encuentre fuera de
            la caja de texto.
@@ -150,7 +124,6 @@ namespace ProyectoFinal
                Los datos ingresados por el usuario en los textbox se asignarán a as variables corres´pondientes.
             */
             string email = txtEmail.Text;
-            string emailpass = txtEmailPass.Text;
             string username = txtUsername.Text;
 
             try{
@@ -160,7 +133,7 @@ namespace ProyectoFinal
                    Declaración de una variable de tipo "string" que almacenará la respuesta generada por el método
                    "ctrRecoverPassword()".
                 */
-                string errorMessage = ctrl.ctrlRecoverPassword(username, email, emailpass);
+                string errorMessage = ctrl.ctrlRecoverPassword(username, email);
                                              // MessageBox que se mostrará si se prresenta algún error.
                 if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
