@@ -48,15 +48,6 @@ namespace ProyectoFinal
                 }
         }
 
-        // <--- Evento #3: "TextChanged". ---> //
-        /*
-           Se creó este evento para el textbox de nombre "txtEmailPass", que sirve para
-           que la contraseña del correo del usuario no se visualice cuando la escriba.
-        */
-        private void txtEmailPass_TextChanged(object sender, EventArgs e){
-            txtEmailPass.UseSystemPasswordChar = true; // Esta condición permite que la contraseña no se visualice.
-        }
-
         // <---------------------------------------> //
         // <---------- MÉTODOS / METHODS ----------> //
         // <---------------------------------------> //
@@ -104,89 +95,109 @@ namespace ProyectoFinal
 
         // <--- Botón "btnSendFeedback". ---> //
         private void btnSendFeedback_Click(object sender, EventArgs e){
+            // Declaración de variables
+            /*
+               Los datos ingresados por el usuario en los textbox se asignarán a as variables correspondientes.
+            */
+            string name = txtName.Text;
+            string lastname = txtLastName.Text;
+            string email = txtEmail.Text;
 
-            // Condición que sólo se activará sí y sólo sí alguno de los campos "obligatorios" están vacíos.
-            if(string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtLastName.Text)
-                || string.IsNullOrEmpty(txtEmail.Text)){
-                // MessageBox que se mostrará cuando el usuario no llene los campos que son obligatorios.
-                MessageBox.Show("Los campos 'My name', 'Last name' e 'Email' son obligatorios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else{
-                // INICIO DE INSTRUCCIONES PARA EL FEEDBACK QUE RECIBIRÁ "axolotlteam.helusers@gmail.com".
-                // Se crea un objeto de la clase "MailMessage".
-                MailMessage msg = new MailMessage();
-                // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            try{
+                Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
+
+                /*
+                   Declaración de una variable de tipo "string" que almacenará la respuesta generada por el método
+                   "ctrRecoverPassword()".
+                */
+                string errorMessage = ctrl.ctrlFeedback(name, lastname, email);
+                                             // MessageBox que se mostrará si se prresenta algún error.
+                if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
-                // Bloque de instrucciones para datos y cuerpo del correo electrónico.
-                // INICIO //
-                msg.To.Add("axolotlteam.helpusers@gmail.com"); // Correo que va a recibir el "Feedback".
-                // Correo quien envía el Feedback.
-                msg.From = new MailAddress(txtEmail.Text, Session.name + "'s" + " Feedback", Encoding.UTF8);
-                msg.Subject = "FEEDBACK AXOLOTL AGENDA."; // "Asunto" del correo.
-                // Cuerpo del correo.
-                msg.Body = "Los datos del Feedback son los siguientes:" +
-                    "\n- Nombre del usuario: " + txtName.Text +
-                    "\n- Apellido del usuario: " + txtLastName.Text +
-                    "\n- Calificación de la App: " + SelectedOptions() +
-                    "\n- Mensaje opcional del usuario: " + Comment();
+                else{
+                    // INICIO DE INSTRUCCIONES PARA EL FEEDBACK QUE RECIBIRÁ "axolotlteam.helusers@gmail.com".
+                    // Se crea un objeto de la clase "MailMessage".
+                    MailMessage msg = new MailMessage();
+                    // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
-                // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
-                // INICIO //
-                SmtpServer.Port = 587; // Puerto.
-                // Asignación de credenciales para el correo del usuario. Se pide el correo y contraseña del mismo.
-                SmtpServer.Credentials = new NetworkCredential(txtEmail.Text, txtEmailPass.Text);
-                SmtpServer.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
-                SmtpServer.Send(msg); // ".Send() es el método que permitirá mandar el mensaje.
-                // FIN //
-                // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "axolotlteam.helpusers@gmail.com".
+                    // Bloque de instrucciones para datos y cuerpo del correo electrónico.
+                    // INICIO //
+                    msg.To.Add("axolotlteam.helpusers@gmail.com"); // Correo que va a recibir el "Feedback".
+                                                                   // Correo quien envía el Feedback.
+                    msg.From = new MailAddress(txtEmail.Text, Session.name + "'s" + " Feedback", Encoding.UTF8);
+                    msg.Subject = "FEEDBACK AXOLOTL AGENDA."; // "Asunto" del correo.
+                                                              // Cuerpo del correo.
+                    msg.Body = "Los datos del Feedback son los siguientes:" +
+                        "\n- Nombre del usuario: " + txtName.Text +
+                        "\n- Apellido del usuario: " + txtLastName.Text +
+                        "\n- Calificación de la App: " + SelectedOptions() +
+                        "\n- Mensaje opcional del usuario: " + Comment();
 
-                // <----------------------------------------------------------------------------------------------------> //
+                    // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
+                    // INICIO //
+                    SmtpServer.Port = 587; // Puerto.
+                    SmtpServer.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
+                                                 // Asignación de credenciales para el correo del usuario. Se pide el correo y contraseña del mismo.
+                    SmtpServer.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
+                    SmtpServer.Send(msg); // ".Send() es el método que permitirá mandar el mensaje.
+                    // FIN //
+                    // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "axolotlteam.helpusers@gmail.com".
 
-                // INICIO DE INSTRUCCIONES PARA EL FEEDBACK QUE RECIBIRÁ "el correo del usuario@gmail.com".
-                // Se crea un objeto de la clase "MailMessage".
-                MailMessage mail = new MailMessage();
-                // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
-                SmtpClient SmtpServerCopy = new SmtpClient("smtp.gmail.com");
+                    // <----------------------------------------------------------------------------------------------------> //
 
-                mail.To.Add(txtEmail.Text); // Correo que va a recibir la copia del "Feedback".
-                mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
-                mail.Subject = "COPY OF FEEDBACK AXOLOTL AGENDA."; // "Asunto" del correo.
-                // Cuerpo del correo.
-                mail.Body = "¡Gracias por su opinión!" + "\nLos datos del Feedback que usted registró son los siguientes:" +
-                    "\n- Nombre del usuario: " + txtName.Text +
-                    "\n- Apellido del usuario: " + txtLastName.Text +
-                    "\n- Calificación de la App: " + SelectedOptions() +
-                    "\n- Mensaje opcional del usuario: " + Comment();
-                // FIN //
+                    // INICIO DE INSTRUCCIONES PARA EL FEEDBACK QUE RECIBIRÁ "el correo del usuario@gmail.com".
+                    // Se crea un objeto de la clase "MailMessage".
+                    MailMessage mail = new MailMessage();
+                    // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
+                    SmtpClient SmtpServerCopy = new SmtpClient("smtp.gmail.com");
 
-                // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
-                // INICIO //
-                SmtpServerCopy.Port = 587; // Puerto.
-                SmtpServerCopy.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
-                // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
-                SmtpServerCopy.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
-                SmtpServerCopy.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
-                // FIN //
-                // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "coreodelusuario@gmail.com".
+                    mail.To.Add(txtEmail.Text); // Correo que va a recibir la copia del "Feedback".
+                    mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
+                    mail.Subject = "COPY OF FEEDBACK AXOLOTL AGENDA."; // "Asunto" del correo.
+                                                                       // Cuerpo del correo.
+                    mail.Body = "¡Gracias por su opinión!" + "\nLos datos del Feedback que usted registró son los siguientes:" +
+                        "\n- Nombre del usuario: " + txtName.Text +
+                        "\n- Apellido del usuario: " + txtLastName.Text +
+                        "\n- Calificación de la App: " + SelectedOptions() +
+                        "\n- Mensaje opcional del usuario: " + Comment();
+                    // FIN //
 
-                // <----------------------------------------------------------------------------------------------------> //
+                    // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
+                    // INICIO //
+                    SmtpServerCopy.Port = 587; // Puerto.
+                    SmtpServerCopy.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
+                                                     // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
+                    SmtpServerCopy.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
+                    SmtpServerCopy.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
+                    // FIN //
+                    // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "coreodelusuario@gmail.com".
 
-                // MessageBox que se mostrará cuando el usuario llene los campos correctamente.
-                MessageBox.Show("¡Gracias por su opinión! :D \nLa información se envió con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // <----------------------------------------------------------------------------------------------------> //
 
-                // Se reinician los textbox.
-                txtName.Clear();
-                txtLastName.Clear();
-                txtEmail.Clear();
-                txtComments.Clear();
-                txtEmailPass.Clear();
-                // Se reinician los radiobuttons.
-                radiobtnExcellent.Checked = false;
-                radiobtnGood.Checked = false;
-                radiobtnAverage.Checked = false;
-                radiobtnPoor.Checked = false;
-                radiobtnWorst.Checked = false;
+                    // MessageBox que se mostrará cuando el usuario llene los campos correctamente.
+                    MessageBox.Show("¡Gracias por su opinión! :D \nLa información se envió con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Se reinician los textbox.
+                    txtName.Clear();
+                    txtLastName.Clear();
+                    txtEmail.Clear();
+                    txtComments.Clear();
+                    // Se reinician los radiobuttons.
+                    radiobtnExcellent.Checked = false;
+                    radiobtnGood.Checked = false;
+                    radiobtnAverage.Checked = false;
+                    radiobtnPoor.Checked = false;
+                    radiobtnWorst.Checked = false;
+                }
+            }
+
+            /*
+               Este "catch" sólo se ejecutará si el usuario deja algún textbox vacío.
+            */
+            catch (Exception ex){
+                // MessageBox a mostrar.
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

@@ -208,7 +208,22 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
-        // <--- Método #5: Retornar mensajes de error en el formulario de registro de actividades. ---> //
+        // <--- Método #5: Método para validaciones de errores en campos obligatorios del feedback. ---> //
+        public string ctrlFeedback(string name, string lastName, string email){ // Recibe como parámetros 2 variables de tipo "string", que son "username" e "email".
+            Model model = new Model(); // Se crea una instancia de la clase "Model".
+
+            // Declaración de variable. Esta almacenará los mensajes de error que correspondan.
+            string errorMessage = "";
+
+            // <--- Validación #1: Verificar que los campos estén vacíos. ---> //
+            // Condición que solo es válida sí y sólo sí el usuario no ha insertado su "username" y "password".
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email))
+                errorMessage = "Los campos principales son obligatorios."; // Mensaje de error.
+
+            return errorMessage; // Retorno del mensaje de error.
+        }
+
+        // <--- Método #6: Retornar mensajes de error en el formulario de registro de actividades. ---> //
         public string ctrlActLog(Activities activity){ // Recibe como parámetro una variable del tipo "actividades".
             Model model = new Model(); // Objeto de la clase "Model".
 
@@ -235,14 +250,14 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
-        // <--- Método #6: Encriptar contraseñas. ---> //
+        // <--- Método #7: Encriptar contraseñas. ---> //
         public string Encrypt(string userPassword){ // Recibe como parámetro una variable de tipo "string" de nombre "userPassword".
             byte[] encryted = Encoding.Unicode.GetBytes(userPassword); // Obtiene una matriz de tipo bytes que representa la cadena unicode, dos por cada carácter.
             userPassword = Convert.ToBase64String(encryted); // A la variable cadena se le asigna la matriz enriptada a "Base 64".
             return userPassword; // Retorno de la contraseña encriptada.
         }
 
-        // <--- Método #7: Desencriptar contraseñas. ---> //
+        // <--- Método #8: Desencriptar contraseñas. ---> //
         /*
            Este método es muy parecido al "Método #7", lo único distinto es que realiza el proceso inverso de dicho método.
         */

@@ -121,7 +121,7 @@ namespace ProyectoFinal
         private void btnRecover_Click(object sender, EventArgs e){
             // Declaración de variables
             /*
-               Los datos ingresados por el usuario en los textbox se asignarán a as variables corres´pondientes.
+               Los datos ingresados por el usuario en los textbox se asignarán a as variables correspondientes.
             */
             string email = txtEmail.Text;
             string username = txtUsername.Text;

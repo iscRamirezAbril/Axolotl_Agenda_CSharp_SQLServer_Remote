@@ -57,9 +57,6 @@ namespace ProyectoFinal
             this.btnSendFeedback = new System.Windows.Forms.Button();
             this.groupBRate = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblEmailPass = new System.Windows.Forms.Label();
-            this.txtEmailPass = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBExcellent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBGood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBAverage)).BeginInit();
@@ -418,40 +415,6 @@ namespace ProyectoFinal
             this.label6.TabIndex = 26;
             this.label6.Text = "(Opcional)";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(283, 184);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(241, 13);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "_______________________________________";
-            // 
-            // lblEmailPass
-            // 
-            this.lblEmailPass.AutoSize = true;
-            this.lblEmailPass.BackColor = System.Drawing.Color.Transparent;
-            this.lblEmailPass.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmailPass.Location = new System.Drawing.Point(284, 153);
-            this.lblEmailPass.Name = "lblEmailPass";
-            this.lblEmailPass.Size = new System.Drawing.Size(107, 16);
-            this.lblEmailPass.TabIndex = 27;
-            this.lblEmailPass.Text = "E-mail password:";
-            // 
-            // txtEmailPass
-            // 
-            this.txtEmailPass.BackColor = System.Drawing.Color.White;
-            this.txtEmailPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmailPass.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmailPass.Location = new System.Drawing.Point(287, 172);
-            this.txtEmailPass.Name = "txtEmailPass";
-            this.txtEmailPass.Size = new System.Drawing.Size(239, 20);
-            this.txtEmailPass.TabIndex = 11;
-            this.txtEmailPass.TextChanged += new System.EventHandler(this.txtEmailPass_TextChanged);
-            // 
             // frmFeedback
             // 
             this.AcceptButton = this.btnSendFeedback;
@@ -461,8 +424,6 @@ namespace ProyectoFinal
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(615, 419);
-            this.Controls.Add(this.txtEmailPass);
-            this.Controls.Add(this.lblEmailPass);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBRate);
             this.Controls.Add(this.btnSendFeedback);
@@ -485,7 +446,6 @@ namespace ProyectoFinal
             this.Controls.Add(this.lblInstructions);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmFeedback";
             this.Opacity = 0.9D;
@@ -531,8 +491,5 @@ namespace ProyectoFinal
         private System.Windows.Forms.Button btnSendFeedback;
         private System.Windows.Forms.GroupBox groupBRate;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblEmailPass;
-        private System.Windows.Forms.TextBox txtEmailPass;
     }
 }
