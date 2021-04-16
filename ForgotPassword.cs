@@ -168,12 +168,43 @@ namespace ProyectoFinal
                     // INICIO DE INSTRUCCIONES PARA EL FEEDBACK QUE RECIBIRÁ "el correo del usuario@gmail.com".
                     // Se crea un objeto de la clase "MailMessage".
                     MailMessage mail = new MailMessage();
-                    // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
-                    SmtpClient SmtpServerCopy = new SmtpClient("smtp.gmail.com");
+                    // Se crea un objeto de la clase "SmtpClient". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                    /*
+                    var fromAddress = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
+                    var toAdress = new MailAddress(email, username);
+                    const string fromPassword = "kueuhrvtvfjefufs";
+                    const string subject = "[AxoltlAgenda] Recuperación de contraseña.";
 
-                    mail.To.Add(txtEmail.Text); // Correo que va a recibir la copia del "Feedback".
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    };
+
+                    using (var message = new MailMessage(fromAddress, toAdress)
+                    {
+                        Subject = subject,
+                        Body = "Usted a solicitado recuperar su contraseña." +
+                        "\nLa contraseña para su inicio de sesión es: " + Session.password +
+                        "\nLe recomendamos que guarde su contraseña en un lugar seguro y fácil de recordar." +
+                        "\n\nAtte. Axolotl Team Support."
+                    })
+                    {
+                        smtp.Send(message);
+                    }
+                    */
+                    // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
+                    // SmtpClient SmtpServerCopy = new SmtpClient("smtp.gmail.com");
+
+                    mail.To.Add(txtEmail.Text); // Correo que va a recibir la contraseña.
                     mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
                     mail.Subject = "PASSWORD RECOVERY."; // "Asunto" del correo.
+
                     // Cuerpo del correo.
                     mail.Body = "Usted a solicitado recuperar su contraseña." +
                         "\nLa contraseña para su inicio de sesión es: " + Session.password +
@@ -183,12 +214,12 @@ namespace ProyectoFinal
 
                     // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
                     // INICIO //
-                    SmtpServerCopy.Port = 587; // Puerto.
-                    SmtpServerCopy.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
+                    SmtpServer.Port = 587; // Puerto.
+                    SmtpServer.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
                     // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
-                    SmtpServerCopy.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "AxolotlTeam!35");
+                    SmtpServer.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
                     
-                    SmtpServerCopy.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
+                    SmtpServer.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
                     // FIN //
                     // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "coreodelusuario@gmail.com".
 
@@ -199,11 +230,10 @@ namespace ProyectoFinal
                         "\nFavor de revisar su correo " + "(" + txtEmail.Text + ") para más información.", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Se reincian los textbox.
-                    txtEmail.Text = "EMAIL";
-                    txtEmailPass.Text = "EMAIL PASSWORD";
-                    txtUsername.Text = "USERNAME";
-                    txtEmail.Focus();
+                    // Llamada al form de Inicio de sesión.
+                    Login LoginForm = new Login(); // Creación de un objeto de la clase "Login".
+                    LoginForm.Show(); // ".Show()" permitirá mostrar el formulario de inicio de sesión.
+                    this.Hide(); // ".Hide() ocultará el formulario actual (RegistrerUsers).
                 }
             }
 

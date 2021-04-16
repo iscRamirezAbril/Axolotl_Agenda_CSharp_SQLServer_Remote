@@ -163,9 +163,9 @@ namespace ProyectoFinal
                 // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
                 // INICIO //
                 SmtpServerCopy.Port = 587; // Puerto.
-                // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
-                SmtpServerCopy.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "AxolotlTeam!35");
                 SmtpServerCopy.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
+                // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
+                SmtpServerCopy.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
                 SmtpServerCopy.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
                 // FIN //
                 // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "coreodelusuario@gmail.com".
