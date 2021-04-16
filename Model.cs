@@ -19,7 +19,7 @@ namespace ProyectoFinal
 
         // <--- Método #1: Validación de datos y registro de usuarios ---> //
         public int register(Users user){ // Recibe como parámetro una variable del tipo "Users".
-                                       // Referencia a la clase de nombre "SQLConnection".
+                                     // Referencia a la clase de nombre "SQLConnection".
             SqlConnection conexion = SQLConnection.getConnection();
 
             conexion.Open(); // Esta función permite abrir la conexión.
@@ -51,9 +51,9 @@ namespace ProyectoFinal
             command.Parameters.AddWithValue("@usrRol", user.UsrRol); // Comando para el campo "usrRol".
 
             // Declaración de variables.
-            int resultado = command.ExecuteNonQuery(); // Te devuelve el número de "filas" que se hayan insertado.
+            int result = command.ExecuteNonQuery(); // Te devuelve el número de "filas" que se hayan insertado.
 
-            return resultado; // Retorno de valor.
+            return result; // Retorno de valor.
         }
 
         // <--- Método #2: Validación de nombres de usuario repetidos al momento de registrar un nuevo usuario. ---> //
@@ -61,8 +61,8 @@ namespace ProyectoFinal
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
 
-            SqlConnection conexion = SQLConnection.getConnection();
-            conexion.Open(); // Esta función permite abrir la conexión.
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open(); // Esta función permite abrir la conexión.
 
             // Declaración de variable.
             /*
@@ -73,7 +73,7 @@ namespace ProyectoFinal
             string sql = "SELECT usrId FROM Users WHERE usrUsername LIKE @usrUsername";
 
             // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-            SqlCommand command = new SqlCommand(sql, conexion);
+            SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@usrUsername", username); // Comando para el campo "usrUsername".
 
             reader = command.ExecuteReader(); // ".ExecuteReader() es el método que permite realizar la lectura de datos.
@@ -99,8 +99,8 @@ namespace ProyectoFinal
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
 
-            SqlConnection conexion = SQLConnection.getConnection();
-            conexion.Open(); // Esta función permite abrir la conexión.
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open(); // Esta función permite abrir la conexión.
 
             // Declaración de variable.
             /*
@@ -113,7 +113,7 @@ namespace ProyectoFinal
             string sql = "SELECT usrId, usrName, usrLname, usrUsername, usrEmail, usrPass, usrRol FROM Users WHERE usrUsername LIKE @usrUsername";
 
             // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-            SqlCommand command = new SqlCommand(sql, conexion);
+            SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@usrUsername", user); // Comando para el campo "usrUsername".
 
             reader = command.ExecuteReader(); // ".ExecuteReader() es el método que permite realizar la lectura de datos.
@@ -141,8 +141,8 @@ namespace ProyectoFinal
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
 
-            SqlConnection conexion = SQLConnection.getConnection();
-            conexion.Open(); // Esta función permite abrir la conexión.
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open(); // Esta función permite abrir la conexión.
 
             // Declaración de variable.
             /*
@@ -154,7 +154,7 @@ namespace ProyectoFinal
             string sql = "SELECT usrId, usrUsername, usrPass FROM Users WHERE usrUsername LIKE @usrUsername"; ;
 
             // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-            SqlCommand command = new SqlCommand(sql, conexion);
+            SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@usrUsername", usuario); // Comando para el campo "usrUsername".
 
             reader = command.ExecuteReader(); // ".ExecuteReader() es el método que permite realizar la lectura de datos.
@@ -171,12 +171,33 @@ namespace ProyectoFinal
             return usr; // Retorno de los datos acumulados en la variable, correspondientes a la consulta.
         }
 
-        // <--- Método #5: Validación de datos y registro de actividades. ---> //
-        public int newAct(Activities activity){ // Recibe como parámetro una variable del tipo "Activities".
-                                       // Referencia a la clase de nombre "SQLConnection".
-            SqlConnection conexion = SQLConnection.getConnection();
+        // <--- Método #5: Modificación de datos de usuario (sólo administradores). ---> //
+        public int ModifyUsers(string Usrname, string UsrLname, string UsrUsername, string UsrEmail, string UsrPass, int Usrid){ // Recibe como parámetro una variable de tipo "Users".
+            // Inserción a "SQL".
+            /*
+               Esta variable selecciona de la tabla "Users" los siguientes datos de los campos correspondientes:
+               1. usrName.       3. usrUsername.  5. usrId.
+               2. ustLname.      4. usrEmail.     6. usrPass.
+               Seleccina esos campos para tener acceso a ellos y poder actualizarlos.
+            */
+            string sql = "UPDATE Users SET usrName='" + Usrname + "', usrLname='" + UsrLname + "', usrUsername='" + UsrUsername + "', usrEmail='" + UsrEmail + "', usrPass='" + UsrPass + "' WHERE usrId='" + Usrid + "'";
 
-            conexion.Open(); // Esta función permite abrir la conexión.
+            // Referencia a la clase de nombre "SQLConnection".
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open();  // Esta función permite abrir la conexión.
+
+            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            SqlCommand command = new SqlCommand(sql, connection);
+            int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
+
+            return result; // Retorno del total de campos modificados.
+        }
+
+        // <--- Método #5: Validación de datos y registro de actividades. ---> //
+        public int newAct(Activities activity){ // Recibe como parámetro una variable de tipo "Activities".
+                                       // Referencia a la clase de nombre "SQLConnection".
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open(); // Esta función permite abrir la conexión.
 
             // Inserción a "SQL".
             /*
@@ -187,7 +208,7 @@ namespace ProyectoFinal
             string sql = "INSERT INTO Activities (actName, actType, actStart, actEND, actUserid) VALUES (@actName, @actType, @actStart, @actEnd, @actUserid)";
 
             // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-            SqlCommand command = new SqlCommand(sql, conexion);
+            SqlCommand command = new SqlCommand(sql, connection);
 
             /*
                Se crean "comandos" que realizan la acción de enviar los datos que el ususario registre
@@ -204,9 +225,9 @@ namespace ProyectoFinal
             command.Parameters.AddWithValue("@actUserid", activity.ActUserid); // Comando para el campo "actUserid".
 
             // Declaración de variables.
-            int resultado = command.ExecuteNonQuery(); // Te devuelve el número de "filas" que se hayan insertado.
+            int result = command.ExecuteNonQuery(); // Te devuelve el número de "filas" que se hayan insertado.
 
-            return resultado; // Retorno de valor.
+            return result; // Retorno de valor.
         }
 
         // <--- Método #6: Asignación de los usuarios registrados a una lista ---> //

@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using MySql.Data.MySqlClient; // Librería que nos permitirá conectarnos a las bases de datos de "MySQL".
+// Librerías que nos permitirán conectarnos a "SQL".
+using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -75,51 +77,31 @@ namespace ProyectoFinal
         private void btnModify_Click(object sender, EventArgs e) {
             Control objCtrl = new Control(); // Creación de una instancia de la clase "Control".
 
-            // Condición que se activará sí y sólo sí alguno de los campos se encuentra vacío.
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtLastName.Text) || string.IsNullOrEmpty(txtUsername.Text) ||
-                string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPass.Text))
-                // Mensaje de error.
-                MessageBox.Show("Debe llenar todos los campos...", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else{
-                // Declaración de variables, a las cuales se les asigna el dato correspondiente al textbox.
-                int usrId = Convert.ToInt32(txtId.Text);
-                string usrName = txtName.Text;
-                string usrLname = txtLastName.Text;
-                string usrUsername = txtUsername.Text;
-                string usrEmail = txtEmail.Text;
-                /*
-                   Se llama al método "Encrypt" porque queremos que la nueva contraseña esté encriptada en la base de datos.
-                */
-                string usrPass = objCtrl.Encrypt(txtPass.Text);
+            /* 
+               Asiganción de los datos de los "textbox" del formulario de registro a las propiedades 
+               del objeto "user".
+            */
+            string UsrName = txtName.Text;
+            string UsrLname = txtLastName.Text;
+            string UsrUsername = txtUsername.Text;
+            string UsrEmail = txtEmail.Text;
+            string UsrPass = objCtrl.Encrypt(txtPass.Text);
+            int Usrid = Convert.ToInt32(txtId.Text);
 
-                // Declaración de variable.
-                /*
-                   Esta variable selecciona de la tabla "Users" los siguientes datos de los campos correspondientes:
-                   1. usrName.       3. usrUsername.  5. usrId.
-                   2. ustLname.      4. usrEmail.     6. usrPass.
-                   Seleccina esos campos para tener acceso a ellos y poder actualizarlos.
-                */
-                string sql = "UPDATE Users SET usrName='" + usrName + "', usrLname='" + usrLname + "', usrUsername='" + usrUsername + "', usrEmail='" + usrEmail + "', usrPass='" + usrPass + "' WHERE usrId='" + usrId + "'";
-                
-                // Referencia a la clase de nombre "SQLConnection".
-                SqlConnection connection = SQLConnection.getConnection();
-                connection.Open();  // Esta función permite abrir la conexión.
-
-                try{
-                    // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-                    SqlCommand command = new SqlCommand(sql, connection);
-                    command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
-
+            try{
+                Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
+                string respuesta = ctrl.ctrlModifyAdmin(UsrName, UsrLname, UsrUsername, UsrEmail, UsrPass, Usrid); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
+                                          // "MessageBox" que se mostrará al usuario para avisar de algun error.
+                if (respuesta.Length > 0) MessageBox.Show(respuesta, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else{
                     // MessageBox que se muestra cuando los datos del usuario se modifican con éxito.
                     MessageBox.Show("¡Datos de usuario modificados con éxito!", "Datos de usuario actualizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clean(); // Llamada al método para limpiar los textbox.
                     ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
                 }
-
-                // Catch correspondiente por si se presenta algún error al momento de actualizar los datos.
-                catch (MySqlException ex){
-                    MessageBox.Show("Error al modifcar: " + ex.Message); // Mensaje de error.
-                }
+            }
+            catch(MySqlException ex){
+                MessageBox.Show("Error al modifcar: " + ex.Message); // Mensaje de error.
             }
         }
 
@@ -186,7 +168,7 @@ namespace ProyectoFinal
             txtUsername.Text = "USERNAME";
             txtEmail.Text = "EMAIL";
             txtPass.Text = "PASSWORD";
-            txtIdTipo.Text = "ID_TIPO";
+            txtIdRol.Text = "ID_TIPO";
         }
 
         // <--------------------------------------> //
@@ -343,9 +325,9 @@ namespace ProyectoFinal
             caja de texto.
         */
         private void txtIdTipo_Enter(object sender, EventArgs e){
-            if (txtIdTipo.Text == "ID_TIPO"){
-                txtIdTipo.Text = ""; // Texto a mostrar.
-                txtIdTipo.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
+            if (txtIdRol.Text == "ID_TIPO"){
+                txtIdRol.Text = ""; // Texto a mostrar.
+                txtIdRol.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
             }
         }
 
@@ -355,9 +337,9 @@ namespace ProyectoFinal
            la caja de texto.
         */
         private void txtIdTipo_Leave(object sender, EventArgs e){
-            if (txtIdTipo.Text == ""){
-                txtIdTipo.Text = "ID_TIPO"; // Texto a mostrar.
-                txtIdTipo.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
+            if (txtIdRol.Text == ""){
+                txtIdRol.Text = "ID_TIPO"; // Texto a mostrar.
+                txtIdRol.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
             }
         }
 
@@ -396,13 +378,13 @@ namespace ProyectoFinal
 
             // Los valores que correspondan a cierta celda de la fila del DataGridView se asginarán a los textbox.
             txtId.Text = dataGridUsers.CurrentRow.Cells[0].Value.ToString();
-            txtName.Text = dataGridUsers.CurrentRow.Cells[1].Value.ToString();
-            txtLastName.Text = dataGridUsers.CurrentRow.Cells[2].Value.ToString();
-            txtUsername.Text = dataGridUsers.CurrentRow.Cells[3].Value.ToString();
-            txtEmail.Text = dataGridUsers.CurrentRow.Cells[4].Value.ToString();
+            txtIdRol.Text = dataGridUsers.CurrentRow.Cells[1].Value.ToString();
+            txtName.Text = dataGridUsers.CurrentRow.Cells[2].Value.ToString();
+            txtLastName.Text = dataGridUsers.CurrentRow.Cells[3].Value.ToString();
+            txtUsername.Text = dataGridUsers.CurrentRow.Cells[4].Value.ToString();
+            txtEmail.Text = dataGridUsers.CurrentRow.Cells[5].Value.ToString();
             // Debido a que la contraseña está encriptada en la base de datos, se manda la contraseña desesncriptada al textbox.
-            txtPass.Text = objCtrl.Desencrypt(dataGridUsers.CurrentRow.Cells[5].Value.ToString());
-            txtIdTipo.Text = dataGridUsers.CurrentRow.Cells[6].Value.ToString();
+            txtPass.Text = objCtrl.Desencrypt(dataGridUsers.CurrentRow.Cells[6].Value.ToString());
         }
     }
 }

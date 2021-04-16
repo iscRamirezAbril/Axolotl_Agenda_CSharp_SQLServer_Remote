@@ -110,7 +110,32 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
-        // <--- Método #3: Comprobación de usuario existente para el inicio de sesión. ---> //
+        // <--- Método #3: Modificación de datos de usuario (Sólo administradores) ---> //
+        public string ctrlModifyAdmin(string usrName, string usrLname, string usrUsername, string usrEmail, string usrPass, int usrId){
+            Model model = new Model(); // Se crea una instancia de la clase "Model".
+
+            // Declaración de variable. Esta almacenará los mensajes de error que correspondan.
+            string errorMessage = "";
+
+            // <--- Validación #1: Llenar todos los campos de formulario de registro. ---> //
+            // Condición que se activará sí y sólo sí alguno de los campos están vacíos.
+            /*
+               ".IsNullOrEmpty() verifica que el campo esté vacío o sea "nulo". de ser así, la condición se cumple.
+            */
+            if (string.IsNullOrEmpty(usrName) || string.IsNullOrEmpty(usrLname) ||
+                string.IsNullOrEmpty(usrUsername) || string.IsNullOrEmpty(usrEmail)
+                || string.IsNullOrEmpty(usrPass))
+                errorMessage = "Todos los campos son obligatorios..."; // Mensaje de error.
+
+            else{
+                // Llamada al método "ModifyUsers()".
+                model.ModifyUsers(usrName, usrLname, usrUsername, usrEmail, usrPass, usrId);
+            }
+
+            return errorMessage; // Retorno del mensaje de error.
+        }
+
+        // <--- Método #4: Comprobación de usuario existente para el inicio de sesión. ---> //
         public string crtlLogin(string username, string password){ // Recibe como parámetros 2 variables de tipo "string": "usuario" y "password".
             Model model = new Model(); // Se crea una instancia de la clase "Model".
 
@@ -169,7 +194,7 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
-        // <--- Método #4: Recuperación de contraseña. ---> //
+        // <--- Método #5: Recuperación de contraseña. ---> //
         public string ctrlRecoverPassword(string username, string email){ // Recibe como parámetros 2 variables de tipo "string", que son "username" e "email".
             Model model = new Model(); // Se crea una instancia de la clase "Model".
 
@@ -208,7 +233,7 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
-        // <--- Método #5: Método para validaciones de errores en campos obligatorios del feedback. ---> //
+        // <--- Método #6: Método para validaciones de errores en campos obligatorios del feedback. ---> //
         public string ctrlFeedback(string name, string lastName, string email){ // Recibe como parámetros 2 variables de tipo "string", que son "username" e "email".
             Model model = new Model(); // Se crea una instancia de la clase "Model".
 
@@ -223,7 +248,7 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
-        // <--- Método #6: Retornar mensajes de error en el formulario de registro de actividades. ---> //
+        // <--- Método #7: Retornar mensajes de error en el formulario de registro de actividades. ---> //
         public string ctrlActLog(Activities activity){ // Recibe como parámetro una variable del tipo "actividades".
             Model model = new Model(); // Objeto de la clase "Model".
 
@@ -250,14 +275,14 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
-        // <--- Método #7: Encriptar contraseñas. ---> //
+        // <--- Método #8: Encriptar contraseñas. ---> //
         public string Encrypt(string userPassword){ // Recibe como parámetro una variable de tipo "string" de nombre "userPassword".
             byte[] encryted = Encoding.Unicode.GetBytes(userPassword); // Obtiene una matriz de tipo bytes que representa la cadena unicode, dos por cada carácter.
             userPassword = Convert.ToBase64String(encryted); // A la variable cadena se le asigna la matriz enriptada a "Base 64".
             return userPassword; // Retorno de la contraseña encriptada.
         }
 
-        // <--- Método #8: Desencriptar contraseñas. ---> //
+        // <--- Método #9: Desencriptar contraseñas. ---> //
         /*
            Este método es muy parecido al "Método #7", lo único distinto es que realiza el proceso inverso de dicho método.
         */
