@@ -120,15 +120,16 @@ namespace ProyectoFinal
             Users usr = null; // Declaración de una variable de tipo "registro_usuarios".
 
             while (reader.Read()){
-                usr = new Users(); // Se crea una instancia de la clase "Users".
-
-                // Asignación de propiedades.
-                usr.Usrid = Convert.ToInt32(reader["usrId"].ToString());
-                usr.UsrName = reader["usrName"].ToString();
-                usr.UsrLname = reader["usrLname"].ToString();
-                usr.UsrEmail = reader["usrEmail"].ToString();
-                usr.UsrPass = reader["usrPass"].ToString();
-                usr.UsrRol = Convert.ToInt32(reader["usrRol"].ToString());
+                // Se crea una instancia de la clase "Users".
+                usr = new Users{
+                    // Asignación de propiedades.
+                    Usrid = Convert.ToInt32(reader["usrId"].ToString()),
+                    UsrName = reader["usrName"].ToString(),
+                    UsrLname = reader["usrLname"].ToString(),
+                    UsrEmail = reader["usrEmail"].ToString(),
+                    UsrPass = reader["usrPass"].ToString(),
+                    UsrRol = Convert.ToInt32(reader["usrRol"].ToString())
+                };
             }
             return usr; // Retorno de los datos acumulados en la variable, correspondientes a la consulta.
         }
@@ -161,18 +162,19 @@ namespace ProyectoFinal
             Users usr = null; // Declaración de una variable de tipo "Users".
 
             while (reader.Read()){
-                usr = new Users(); // Se crea una instancia de la clase "Users".
-
-                // Asignación de propiedades.
-                usr.UsrUsername = reader["usrUsername"].ToString();
-                usr.UsrPass = reader["usrPass"].ToString();
+                // Se crea una instancia de la clase "Users".
+                usr = new Users{
+                    // Asignación de propiedades.
+                    UsrUsername = reader["usrUsername"].ToString(),
+                    UsrPass = reader["usrPass"].ToString()
+                };
             }
 
             return usr; // Retorno de los datos acumulados en la variable, correspondientes a la consulta.
         }
 
         // <--- Método #5: Modificación de datos de usuario (sólo administradores). ---> //
-        public int ModifyUsers(string Usrname, string UsrLname, string UsrUsername, string UsrEmail, string UsrPass, int Usrid){ // Recibe como parámetro una variable de tipo "Users".
+        public int ModifyUsers(string Usrname, string UsrLname, string UsrUsername, string UsrEmail, string UsrPass, int Usrid){
             // Inserción a "SQL".
             /*
                Esta variable selecciona de la tabla "Users" los siguientes datos de los campos correspondientes:
@@ -193,7 +195,71 @@ namespace ProyectoFinal
             return result; // Retorno del total de campos modificados.
         }
 
-        // <--- Método #5: Validación de datos y registro de actividades. ---> //
+        // <--- Método #7: Actualización de datos de usuario que tiene una sesión abierta. ---> //
+        public int updateSessionData(string Usrname, string UsrLname, string UsrUsername, string UsrEmail){
+            // Inserción a "SQL".
+            /*
+               Esta variable selecciona de la tabla "Users" los siguientes datos de los campos correspondientes:
+               1. usrName.       3. usrUsername.  5. usrId.
+               2. ustLname.      4. usrEmail.
+               Seleccina esos campos para tener acceso a ellos y poder actualizarlos.
+            */
+            string sql = "UPDATE Users SET usrName='" + Usrname + "', usrLname='" + UsrLname + "', usrUsername='" + UsrUsername + "', usrEmail='" + UsrEmail + "' WHERE usrId='" + Session.id + "'";
+
+            // Referencia a la clase de nombre "SQLConnection".
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open();  // Esta función permite abrir la conexión.
+
+            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            SqlCommand command = new SqlCommand(sql, connection);
+            int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
+
+            return result; // Retorno del total de campos modificados.
+        }
+
+        // <--- Método #6: Eliminar cuenta de usuario. ---> //
+        public int DeleteAccount(int Usrid){
+            // Inserción a "SQL".
+            /*
+               Esta variable selecciona de la tabla "Users" los siguientes datos de los campos correspondientes:
+               1. usrId.
+               Seleccina esos campos para tener acceso a ellos y eliminar el usuario de dicho id.
+            */
+            string sql = "DELETE Users WHERE usrId='" + Usrid + "'";
+
+            // Referencia a la clase de nombre "SQLConnection".
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open();  // Esta función permite abrir la conexión.
+
+            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            SqlCommand command = new SqlCommand(sql, connection);
+            int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
+
+            return result; // Retorno del total de campos modificados.
+        }
+
+        // <--- Método #5: Eliminar una actividad. ---> //
+        public int DeleteAct(string ActName){
+            // Inserción a "SQL".
+            /*
+               Esta variable selecciona de la tabla "Activities" los siguientes datos de los campos correspondientes:
+               1. ActName.
+               Seleccina esos campos para tener acceso a ellos y eliminar la actividad de dicho nombre.
+            */
+            string sql = "DELETE FROM Activities WHERE actName= '" + ActName + "'";
+
+            // Referencia a la clase de nombre "SQLConnection".
+            SqlConnection connection = SQLConnection.getConnection();
+            connection.Open();  // Esta función permite abrir la conexión.
+
+            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            SqlCommand command = new SqlCommand(sql, connection);
+            int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
+
+            return result; // Retorno del total de campos modificados.
+        }
+
+        // <--- Método #6: Validación de datos y registro de actividades. ---> //
         public int newAct(Activities activity){ // Recibe como parámetro una variable de tipo "Activities".
                                        // Referencia a la clase de nombre "SQLConnection".
             SqlConnection connection = SQLConnection.getConnection();
@@ -230,7 +296,7 @@ namespace ProyectoFinal
             return result; // Retorno de valor.
         }
 
-        // <--- Método #6: Asignación de los usuarios registrados a una lista ---> //
+        // <--- Método #7: Asignación de los usuarios registrados a una lista ---> //
         public List<Object> userQuery(string data){
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
@@ -259,16 +325,16 @@ namespace ProyectoFinal
 
                 while (reader.Read()){
                     // Creación de un objeto de la clase "Users".
-                    Users User = new Users();
-
-                    // Asignación de propiedades.
-                    User.Usrid = (int)reader[0];
-                    User.UsrName = reader[1].ToString();
-                    User.UsrLname = reader[2].ToString();
-                    User.UsrUsername = reader[3].ToString();
-                    User.UsrEmail = reader[4].ToString();
-                    User.UsrPass = reader[5].ToString();
-                    User.UsrRol = (int)reader[6];
+                    Users User = new Users{
+                        // Asignación de propiedades.
+                        Usrid = (int)reader[0],
+                        UsrName = reader[1].ToString(),
+                        UsrLname = reader[2].ToString(),
+                        UsrUsername = reader[3].ToString(),
+                        UsrEmail = reader[4].ToString(),
+                        UsrPass = reader[5].ToString(),
+                        UsrRol = (int)reader[6]
+                    };
 
                     List.Add(User); // Los datos que se leyeron se agregarán a la lista.
                 }
@@ -281,7 +347,7 @@ namespace ProyectoFinal
             return List; // Retorno de la lista.
         }
 
-        // <--- Método #9: Asignación de las actividades registradas en la base de datos a una lista ---> //
+        // <--- Método #8: Asignación de las actividades registradas en la base de datos a una lista ---> //
         public List<object> ActQuery(string act){
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
@@ -309,15 +375,15 @@ namespace ProyectoFinal
 
                 while (reader.Read()){
                     // Creación de un objeto de la clase "Activities".
-                    Activities Activity = new Activities();
-
-                    // Asignación de propiedades.
-                    Activity.ActId = (int)reader[0];
-                    Activity.ActName = reader[1].ToString();
-                    Activity.ActType = reader[2].ToString();
-                    Activity.ActStart = (DateTime)reader[3];
-                    Activity.ActEnd = (DateTime)reader[4];
-                    Activity.ActUserid = (int)reader[5];
+                    Activities Activity = new Activities{
+                        // Asignación de propiedades.
+                        ActId = (int)reader[0],
+                        ActName = reader[1].ToString(),
+                        ActType = reader[2].ToString(),
+                        ActStart = (DateTime)reader[3],
+                        ActEnd = (DateTime)reader[4],
+                        ActUserid = (int)reader[5]
+                    };
 
                     List.Add(Activity); // Los datos que se leyeron se agregarán a la lista.
                 }

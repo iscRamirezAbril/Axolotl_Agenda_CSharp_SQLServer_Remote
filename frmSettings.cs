@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using MySql.Data.MySqlClient; // Librería que nos permitirá conectarnos a las bases de datos de "MySQL".
-using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -86,7 +84,6 @@ namespace ProyectoFinal
             panelEditUserData.Visible = true; // El panel donde se encuentra la información de usuario editable se mostrará.
         }
 
-
         // <--- Evento #2: "TextChanged". ---> //
         private void txtCurrentPass_TextChanged(object sender, EventArgs e){
             txtCurrentPass.UseSystemPasswordChar = true; // Esta condición permite que la contraseña no se visualice.
@@ -98,76 +95,33 @@ namespace ProyectoFinal
 
         // <--- Botón "btnSaveEdit". ---> //
         private void btnSaveEdit_Click(object sender, EventArgs e){
-            Control objCtrl = new Control(); // Creación de una instancia de la clase "Control".
+            // Declaración de variables, a las cuales se les asigna el dato correspondiente al textbox.
+            string usrName = txtEditName.Text;
+            string usrLname = txtEditLastName.Text;
+            string usrUsername = txtEditUsername.Text;
+            string usrEmail = txtEditEmail.Text;
+            string usrPass = txtCurrentPass.Text;
 
-            /*
-              Condición que se activará sí y sólo sí alguno de los textbox de la configuración
-              están vacíos.
-            */
-            if (txtEditName.Text == "" || txtEditLastName.Text == "" || txtEditEmail.Text == "" || txtCurrentPass.Text == ""
-                || txtEditUsername.Text == "")
-                MessageBox.Show("Los campos no deben estar vacíos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            /*
-              Condición que te permitirá editar tus datos sí y sólo sí la contraseña insertada
-              en el textbox es igual a la registrada en la base de datos.
-            */
-            else if (Session.password == objCtrl.Encrypt(txtCurrentPass.Text)){
-                // Declaración de variables, a las cuales se les asigna el dato correspondiente al textbox.
-                int usrId = Session.id;
-                string usrName = txtEditName.Text;
-                string usrLname = txtEditLastName.Text;
-                string usrUsername = txtEditUsername.Text;
-                string usrEmail = txtEditEmail.Text;
+            try{
+                Control objCtrl = new Control(); // Creación de una instancia de la clase "Control".
 
-                // Declaración de variable.
                 /*
-                   Esta variable selecciona de la tabla "registro_usuarios" los siguientes datos de los campos correspondientes:
-                   1. usrName.    3. usrUsername.  5. usrId.
-                   2. usrLname.   4. usrEmail.
-                   Seleccina esos campos para tener acceso a ellos y poder actualizarlos.
+                   Declaración de una variable de tipo "string" que almacenará la respuesta generada por el método
+                   "ctrRecoverPassword()".
                 */
-                string sql = "UPDATE Users SET usrName='" + usrName + "', usrLname='" + usrLname + "', usrUsername='" + usrUsername + "', usrEmail='" + usrEmail + "' WHERE usrId='" + usrId + "'";
-                
-                // Referencia a la clase de nombre "SQLConnection".
-                SqlConnection connection = SQLConnection.getConnection();
-                connection.Open();  // Esta función permite abrir la conexión.
+                string errorMessage = objCtrl.ctrlUpdateSession(usrName, usrLname, usrUsername, usrEmail, objCtrl.Encrypt(usrPass));
+                // MessageBox que se mostrará si se prresenta algún error.
+                if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                try{
-                    // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-                    SqlCommand command = new SqlCommand(sql, connection);
-
-                    // MessageBox que se muestra antes cuando los datos del usuario se modifican con éxito.
-                    MessageBox.Show("¡Registro modificado con éxito! :D" +
-                        "\nPara que sus datos se actualicen correctamente deberá iniciar sesión de nuevo." +
-                        "\n\nFavor de cerrar sesión.", "Actualización.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    /*
-                       A la clase "Session" con su respectiva variable se le asigna el dato del textbox
-                       correspondiente.
-                   */
-                    Session.name = txtEditName.Text;
-                    Session.last_name = txtEditLastName.Text;
-                    Session.username = txtEditUsername.Text;
-                    Session.email = txtEditEmail.Text;
-
-                    /*
-                       A los labels correspondientes se les asigna el objeto de la clase "Session".
-                    */
-                    lblSettName.Text = Session.name;
-                    lblSettLastN.Text = Session.last_name;
-                    lblSettUsername.Text = Session.username;
-                    lblSettEmail.Text = Session.email;
-                }
-
-                // Catch correspondiente por si se presenta algún error al momento de actualizar los datos.
-                catch (MySqlException ex){
-                    MessageBox.Show("Error al modifcar: " + ex.Message); // Mensaje de error.
+                else{
+                    // MessageBox a mostrar cuando los datos del usuario se actualicen correctamente.
+                    MessageBox.Show("¡Información actualizada con éxito!" +
+                        "\nPara visualizarlos correctamente, le recomendamos cerrar y abrir sesión de nuevo.", "Actualización de datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else{
-                // MessageBox que se mostrará sí y sólo sí la contraseña del usuario es incorrecta.
-                MessageBox.Show("Contraseña incorrecta.\nFavor de intentarlo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            catch(Exception ex){
+                MessageBox.Show(ex.Message);
             }
         }
 

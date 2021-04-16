@@ -134,69 +134,11 @@ namespace ProyectoFinal
                    "ctrRecoverPassword()".
                 */
                 string errorMessage = ctrl.ctrlRecoverPassword(username, email);
-                                             // MessageBox que se mostrará si se prresenta algún error.
+                // MessageBox que se mostrará si se prresenta algún error.
                 if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                else{
-                    // INICIO DE INSTRUCCIONES PARA EL FEEDBACK QUE RECIBIRÁ "el correo del usuario@gmail.com".
-                    // Se crea un objeto de la clase "MailMessage".
-                    MailMessage mail = new MailMessage();
-                    // Se crea un objeto de la clase "SmtpClient". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
-                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                    /*
-                    var fromAddress = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
-                    var toAdress = new MailAddress(email, username);
-                    const string fromPassword = "kueuhrvtvfjefufs";
-                    const string subject = "[AxoltlAgenda] Recuperación de contraseña.";
-
-                    var smtp = new SmtpClient
-                    {
-                        Host = "smtp.gmail.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        UseDefaultCredentials = false,
-                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                    };
-
-                    using (var message = new MailMessage(fromAddress, toAdress)
-                    {
-                        Subject = subject,
-                        Body = "Usted a solicitado recuperar su contraseña." +
-                        "\nLa contraseña para su inicio de sesión es: " + Session.password +
-                        "\nLe recomendamos que guarde su contraseña en un lugar seguro y fácil de recordar." +
-                        "\n\nAtte. Axolotl Team Support."
-                    })
-                    {
-                        smtp.Send(message);
-                    }
-                    */
-                    // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
-                    // SmtpClient SmtpServerCopy = new SmtpClient("smtp.gmail.com");
-
-                    mail.To.Add(txtEmail.Text); // Correo que va a recibir la contraseña.
-                    mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
-                    mail.Subject = "PASSWORD RECOVERY."; // "Asunto" del correo.
-
-                    // Cuerpo del correo.
-                    mail.Body = "Usted a solicitado recuperar su contraseña." +
-                        "\nLa contraseña para su inicio de sesión es: " + Session.password +
-                        "\nLe recomendamos que guarde su contraseña en un lugar seguro y fácil de recordar." +
-                        "\n\nAtte. Axolotl Team Support.";
-                    // FIN //
-
-                    // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
-                    // INICIO //
-                    SmtpServer.Port = 587; // Puerto.
-                    SmtpServer.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
-                    // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
-                    SmtpServer.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
-                    
-                    SmtpServer.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
-                    // FIN //
-                    // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "coreodelusuario@gmail.com".
-
-                    // <----------------------------------------------------------------------------------------------------> //
+                else {
+                    paswordRecoveryMail(); // Llamada al método que envía un correo para recuperación de contraseña.
 
                     // MessageBox que se mostrará si el usuario llena los campos correctamente.
                     MessageBox.Show("Su solicitud a sido enviada con éxito :)" +
@@ -217,6 +159,70 @@ namespace ProyectoFinal
                 // MessageBox a mostrar.
                 MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        // <---------------------------------------> //
+        // <---------- MÉTODOS / METHODS ----------> //
+        // <---------------------------------------> //
+
+        // <--- Método #1: Método para enviar un correo de recuperación de contraseña. ---> //
+        private void paswordRecoveryMail(){
+            // INICIO DE INSTRUCCIONES PARA EL FEEDBACK QUE RECIBIRÁ "el correo del usuario@gmail.com".
+            // Se crea un objeto de la clase "MailMessage".
+            MailMessage mail = new MailMessage();
+            // Se crea un objeto de la clase "SmtpClient". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+            mail.To.Add(txtEmail.Text); // Correo que va a recibir la contraseña.
+            mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
+            mail.Subject = "PASSWORD RECOVERY."; // "Asunto" del correo.
+
+            // Cuerpo del correo.
+            mail.Body = "Usted a solicitado recuperar su contraseña." +
+                "\nLa contraseña para su inicio de sesión es: " + Session.password +
+                "\nLe recomendamos que guarde su contraseña en un lugar seguro y fácil de recordar." +
+                "\n\nAtte. Axolotl Team Support.";
+            // FIN //
+
+            // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
+            // INICIO //
+            SmtpServer.Port = 587; // Puerto.
+            SmtpServer.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
+                                         // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
+            SmtpServer.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
+
+            SmtpServer.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
+            // FIN //
+            // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "coreodelusuario@gmail.com".
+            
+            /*
+            var fromAddress = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
+            var toAdress = new MailAddress(email, username);
+            const string fromPassword = "kueuhrvtvfjefufs";
+            const string subject = "[AxoltlAgenda] Recuperación de contraseña.";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+            using (var message = new MailMessage(fromAddress, toAdress)
+            {
+                Subject = subject,
+                Body = "Usted a solicitado recuperar su contraseña." +
+                "\nLa contraseña para su inicio de sesión es: " + Session.password +
+                "\nLe recomendamos que guarde su contraseña en un lugar seguro y fácil de recordar." +
+                "\n\nAtte. Axolotl Team Support."
+            })
+            {
+                smtp.Send(message);
+            }
+            */
         }
     }
 }

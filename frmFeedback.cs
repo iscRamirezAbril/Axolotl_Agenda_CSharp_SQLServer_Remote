@@ -89,6 +89,21 @@ namespace ProyectoFinal
             return comment; // Retorno de valor.
         }
 
+        // <--- Método #3: Reiniciar Form a su estado original. ---> //
+        private void Clear(){
+            // Se reinician los textbox.
+            txtName.Clear();
+            txtLastName.Clear();
+            txtEmail.Clear();
+            txtComments.Clear();
+            // Se reinician los radiobuttons.
+            radiobtnExcellent.Checked = false;
+            radiobtnGood.Checked = false;
+            radiobtnAverage.Checked = false;
+            radiobtnPoor.Checked = false;
+            radiobtnWorst.Checked = false;
+        }
+
         // <---------------------------------------> //
         // <---------- BOTONES / BUTTONS ----------> //
         // <---------------------------------------> //
@@ -178,17 +193,7 @@ namespace ProyectoFinal
                     // MessageBox que se mostrará cuando el usuario llene los campos correctamente.
                     MessageBox.Show("¡Gracias por su opinión! :D \nLa información se envió con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Se reinician los textbox.
-                    txtName.Clear();
-                    txtLastName.Clear();
-                    txtEmail.Clear();
-                    txtComments.Clear();
-                    // Se reinician los radiobuttons.
-                    radiobtnExcellent.Checked = false;
-                    radiobtnGood.Checked = false;
-                    radiobtnAverage.Checked = false;
-                    radiobtnPoor.Checked = false;
-                    radiobtnWorst.Checked = false;
+                    Clear(); // Llamada al método que reinicia al Form.
                 }
             }
 

@@ -4,10 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-// Librerías que nos permitirán conectarnos a "SQL".
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -52,21 +48,15 @@ namespace ProyectoFinal
             user.UsrEmail = txtEmail.Text;
             user.UsrPass = txtPass.Text;
 
-            try{
-                Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
-                string respuesta = ctrl.ctrlregisterAdmins(user); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
-                                          // "MessageBox" que se mostrará al usuario para avisar de algun error.
-                if (respuesta.Length > 0) MessageBox.Show(respuesta, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else{
-                    // "MessageBox" que se mostrará al usuario para confirmar su registro.
-                    MessageBox.Show("¡Usuario registrado con éxito!", "Datos registrados.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clean(); // Llamada al método para limpiar los textbox.
-                    ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
-                }
-            }
-            // Catch que sólo se activará si el administrador presenta algún tipo de error al registrar un usuario.
-            catch (Exception ex){
-                MessageBox.Show(ex.Message); // Mensaje de error.
+            Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
+            string errorMessage = ctrl.ctrlregisterAdmins(user); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
+                                        // "MessageBox" que se mostrará al usuario para avisar de algun error.
+            if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else{
+                // "MessageBox" que se mostrará al usuario para confirmar su registro.
+                MessageBox.Show("¡Usuario registrado con éxito!", "Datos registrados.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Clean(); // Llamada al método para limpiar los textbox.
+                ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
             }
         }
 
@@ -74,7 +64,7 @@ namespace ProyectoFinal
         /*
            Botón que permitirá modificar los datos de un usuario.
         */
-        private void btnModify_Click(object sender, EventArgs e) {
+        private void btnModify_Click(object sender, EventArgs e){
             Control objCtrl = new Control(); // Creación de una instancia de la clase "Control".
 
             /* 
@@ -88,20 +78,15 @@ namespace ProyectoFinal
             string UsrPass = objCtrl.Encrypt(txtPass.Text);
             int Usrid = Convert.ToInt32(txtId.Text);
 
-            try{
-                Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
-                string respuesta = ctrl.ctrlModifyAdmin(UsrName, UsrLname, UsrUsername, UsrEmail, UsrPass, Usrid); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
-                                          // "MessageBox" que se mostrará al usuario para avisar de algun error.
-                if (respuesta.Length > 0) MessageBox.Show(respuesta, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else{
-                    // MessageBox que se muestra cuando los datos del usuario se modifican con éxito.
-                    MessageBox.Show("¡Datos de usuario modificados con éxito!", "Datos de usuario actualizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clean(); // Llamada al método para limpiar los textbox.
-                    ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
-                }
-            }
-            catch(MySqlException ex){
-                MessageBox.Show("Error al modifcar: " + ex.Message); // Mensaje de error.
+            Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
+            string respuesta = ctrl.ctrlModifyAdmin(UsrName, UsrLname, UsrUsername, UsrEmail, UsrPass, Usrid); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
+                                        // "MessageBox" que se mostrará al usuario para avisar de algun error.
+            if (respuesta.Length > 0) MessageBox.Show(respuesta, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else{
+                // MessageBox que se muestra cuando los datos del usuario se modifican con éxito.
+                MessageBox.Show("¡Datos de usuario modificados con éxito!", "Datos de usuario actualizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Clean(); // Llamada al método para limpiar los textbox.
+                ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
             }
         }
 
@@ -114,30 +99,16 @@ namespace ProyectoFinal
             int usrId = Convert.ToInt32(txtId.Text);
 
             // Condición que sólo se ejecutará si el administrador dá click al botón "Yes" del MessageBox.
-            if(MessageBox.Show("¿Seguro que quiere eliminar a este usuario de la Base de Datos?" +
+            if (MessageBox.Show("¿Seguro que quiere eliminar a este usuario de la Base de Datos?" +
                 "\n¡No podrá recuperar los datos!", "¡Aviso!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes){
-                // Variable que almacenará el comando "DELETE" de SQL.
-                string sql = "DELETE FROM Users WHERE id='"+ usrId +"'";
 
-                // Referencia a la clase de nombre "SQLConnection".
-                SqlConnection connection = SQLConnection.getConnection();
-                connection.Open();  // Esta función permite abrir la conexión.
+                Model model = new Model(); // Creación de un objeto de la clase "Model".
+                model.DeleteAccount(usrId);
 
-                try{
-                    // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-                    SqlCommand command = new SqlCommand(sql, connection);
-                    command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
-
-                    // MessageBox que se muestra cuando los datos del usuario se eliminan con éxito.
-                    MessageBox.Show("¡Usuario eliminado de la Base de Datos!", "Usuario eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clean(); // Llamada al método para limpiar los textbox.
-                    ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
-                }
-
-                // Catch correspondiente por si se presenta algún error al momento de eliminar un usuario.
-                catch (MySqlException ex){
-                    MessageBox.Show("Error al eliminar: " + ex.Message); // Mensaje de error.
-                }
+                // MessageBox que se muestra cuando los datos del usuario se eliminan con éxito.
+                MessageBox.Show("¡Usuario eliminado de la Base de Datos!", "Usuario eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Clean(); // Llamada al método para limpiar los textbox.
+                ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
             }
         }
 

@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using MySql.Data.MySqlClient; // Librería que nos permitirá conectarnos a las bases de datos de "MySQL".
-using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -173,27 +171,14 @@ namespace ProyectoFinal
             // Condición que sólo se ejecutará sí y sólo sí el usuario presiona el botón "Yes" del MessageBox.
             if(MessageBox.Show("¿Seguro que quiere eliminar la actividad?\nTendrá que registrarla de nuevo.", 
                 "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
-                // Variable que almacenará el comando "DELETE" de SQL.
-                string sql = "DELETE FROM Activities WHERE actName= '" + ActName + "'";
 
-                // Referencia a la clase de nombre "SQLConnection".
-                SqlConnection connection = SQLConnection.getConnection();
-                connection.Open();  // Esta función permite abrir la conexión.
+                Model model = new Model(); // Creación de un objeto de la clase "Model".
+                model.DeleteAct(ActName);
 
-                try{
-                    // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-                    SqlCommand command = new SqlCommand(sql, connection);
-                    command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
-
-                    // MessageBox que se muestra cuando los datos de la actividad se eliminan con éxito.
-                    MessageBox.Show("¡Actividad eliminada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clean(); // Llamada al método para limpiar los textbox.
-                    ReloadActTable(null); // Llamada al método que permite actualizar la tabla.
-
-                }
-                catch(MySqlException ex){
-                    MessageBox.Show("Error al eliminar: " + ex.Message); // Mensaje de error.
-                }
+                // MessageBox que se muestra cuando los datos de la actividad se eliminan con éxito.
+                MessageBox.Show("¡Actividad eliminada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Clean(); // Llamada al método para limpiar los textbox.
+                ReloadActTable(null); // Llamada al método que permite actualizar la tabla.
             }
         }
 

@@ -135,6 +135,28 @@ namespace ProyectoFinal
             return errorMessage; // Retorno del mensaje de error.
         }
 
+        // <--- Método #4: Comprobación de datos y contraseñas. ---> //
+        public string ctrlUpdateSession(string usrName, string usrLname, string usrUsername, string usrEmail, string usrPass){
+            Model model = new Model();
+
+            // Declaración de variable. Esta almacenará los mensajes de error que correspondan.
+            string errorMessage = "";
+
+            // <--- Validación #1: Llenar todos los campos de formulario de registro. ---> //
+            // Condición que se activará sí y sólo sí alguno de los campos están vacíos.
+            /*
+               ".IsNullOrEmpty() verifica que el campo esté vacío o sea "nulo". de ser así, la condición se cumple.
+            */
+            if (usrName == "" || usrLname == "" || usrUsername == ""|| usrEmail == "" || usrPass == "")
+                errorMessage = "Los campos no deben estar vacíos.";
+
+            // <--- Validación #2: Verificar que las contraseñas coincidan. ---> //
+            else if (Session.password != usrPass) errorMessage = "Contraseña incorrecta.\nFavor de intentarlo nuevamente.";
+            else model.updateSessionData(usrName, usrLname, usrUsername, usrEmail);
+
+            return errorMessage;
+        }
+
         // <--- Método #4: Comprobación de usuario existente para el inicio de sesión. ---> //
         public string crtlLogin(string username, string password){ // Recibe como parámetros 2 variables de tipo "string": "usuario" y "password".
             Model model = new Model(); // Se crea una instancia de la clase "Model".
@@ -235,8 +257,6 @@ namespace ProyectoFinal
 
         // <--- Método #6: Método para validaciones de errores en campos obligatorios del feedback. ---> //
         public string ctrlFeedback(string name, string lastName, string email){ // Recibe como parámetros 2 variables de tipo "string", que son "username" e "email".
-            Model model = new Model(); // Se crea una instancia de la clase "Model".
-
             // Declaración de variable. Esta almacenará los mensajes de error que correspondan.
             string errorMessage = "";
 
