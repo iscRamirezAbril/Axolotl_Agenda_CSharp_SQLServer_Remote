@@ -73,17 +73,13 @@ namespace ProyectoFinal
           Almacenar colores RGB.
         */
         private struct RGBColors{
-            public static Color color1 = Color.FromArgb(172, 126, 241);
-            public static Color color2 = Color.FromArgb(249, 118, 176);
-            public static Color color3 = Color.FromArgb(253, 138, 114);
-            public static Color color4 = Color.FromArgb(95, 77, 221);
-            public static Color color5 = Color.FromArgb(249, 88, 155);
             public static Color color6 = Color.FromArgb(255, 255, 255);
+            public static Color color5 = Color.FromArgb(0, 0, 0);
         }
 
-        // ------------------------------ //
+        // ----------------------------- //
         // ----- MÉTODOS / METHODS ----- //
-        // ------------------------------ //
+        // ----------------------------- //
 
         // <--- Método #1: "ActivateButton" ---> //
         /*
@@ -164,11 +160,6 @@ namespace ProyectoFinal
                "Forms_secundarios_para_aplicación_principal". Dicho formulario es del "Menu Principal".
             */
             secondForm(new frmMenu()); // Llamada al método "SecondaryForm" para abrir el formulario "hijo" correspondiente al botón.
-        }
-
-        // <--- Botón "iconbtnProd" (Productivity). ---> //
-        private void iconbtnProd_Click(object sender, EventArgs e){
-            ActivateButton(sender, RGBColors.color6); // Llamada al método para diseño de botón cuando es presionado.
         }
 
         // <--- Botón "iconbtnFeed" (Feedback). ---> //

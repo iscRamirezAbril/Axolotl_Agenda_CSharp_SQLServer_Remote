@@ -66,7 +66,7 @@ namespace ProyectoFinal
             this.linkLabelEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabelEdit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.linkLabelEdit.LinkColor = System.Drawing.Color.Gainsboro;
-            this.linkLabelEdit.Location = new System.Drawing.Point(135, 360);
+            this.linkLabelEdit.Location = new System.Drawing.Point(123, 340);
             this.linkLabelEdit.Name = "linkLabelEdit";
             this.linkLabelEdit.Size = new System.Drawing.Size(77, 18);
             this.linkLabelEdit.TabIndex = 27;
