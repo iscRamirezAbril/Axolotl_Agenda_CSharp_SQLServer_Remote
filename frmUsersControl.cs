@@ -76,10 +76,11 @@ namespace ProyectoFinal
             string UsrUsername = txtUsername.Text;
             string UsrEmail = txtEmail.Text;
             string UsrPass = objCtrl.Encrypt(txtPass.Text);
-            int Usrid = Convert.ToInt32(txtId.Text);
+            int UsridRol = Convert.ToInt32(txtIdRol.Text);
+            int UsrId = Convert.ToInt32(txtId.Text);
 
             Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
-            string respuesta = ctrl.ctrlModifyAdmin(UsrName, UsrLname, UsrUsername, UsrEmail, UsrPass, Usrid); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
+            string respuesta = ctrl.ctrlModifyAdmin(UsrName, UsrLname, UsrUsername, UsrEmail, UsrPass, UsridRol, UsrId); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
                                         // "MessageBox" que se mostrará al usuario para avisar de algun error.
             if (respuesta.Length > 0) MessageBox.Show(respuesta, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else{
@@ -296,7 +297,7 @@ namespace ProyectoFinal
             caja de texto.
         */
         private void txtIdTipo_Enter(object sender, EventArgs e){
-            if (txtIdRol.Text == "ID_TIPO"){
+            if (txtIdRol.Text == "ID_ROL"){
                 txtIdRol.Text = ""; // Texto a mostrar.
                 txtIdRol.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
             }
@@ -309,7 +310,7 @@ namespace ProyectoFinal
         */
         private void txtIdTipo_Leave(object sender, EventArgs e){
             if (txtIdRol.Text == ""){
-                txtIdRol.Text = "ID_TIPO"; // Texto a mostrar.
+                txtIdRol.Text = "ID_ROL"; // Texto a mostrar.
                 txtIdRol.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
             }
         }

@@ -61,7 +61,6 @@ namespace ProyectoFinal
             this.label8 = new System.Windows.Forms.Label();
             this.iconbtnDelete = new FontAwesome.Sharp.IconButton();
             this.btnModify = new System.Windows.Forms.Button();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usrRolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usrNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +69,7 @@ namespace ProyectoFinal
             this.usrEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usrPassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usrConPassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
             this.groupBUsersData.SuspendLayout();
@@ -312,7 +312,6 @@ namespace ProyectoFinal
             this.txtIdRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtIdRol.Location = new System.Drawing.Point(474, 58);
             this.txtIdRol.Name = "txtIdRol";
-            this.txtIdRol.ReadOnly = true;
             this.txtIdRol.Size = new System.Drawing.Size(104, 20);
             this.txtIdRol.TabIndex = 16;
             this.txtIdRol.Text = "ID_ROL";
@@ -529,10 +528,6 @@ namespace ProyectoFinal
             this.btnModify.UseVisualStyleBackColor = false;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataSource = typeof(ProyectoFinal.Users);
-            // 
             // usridDataGridViewTextBoxColumn
             // 
             this.usridDataGridViewTextBoxColumn.DataPropertyName = "Usrid";
@@ -584,6 +579,10 @@ namespace ProyectoFinal
             this.usrConPassDataGridViewTextBoxColumn.HeaderText = "UsrConPass";
             this.usrConPassDataGridViewTextBoxColumn.Name = "usrConPassDataGridViewTextBoxColumn";
             this.usrConPassDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataSource = typeof(ProyectoFinal.Users);
             // 
             // frmUsersControl
             // 

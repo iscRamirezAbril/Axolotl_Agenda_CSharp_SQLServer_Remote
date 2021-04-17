@@ -1,5 +1,7 @@
-﻿using MySql.Data.MySqlClient; // Librería que nos permitirá conectarnos a las bases de datos de "MySQL".
+﻿// Librerías que nos permitirá conectarnos a la base de datos de "SQL Server".
+using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -174,15 +176,15 @@ namespace ProyectoFinal
         }
 
         // <--- Método #5: Modificación de datos de usuario (sólo administradores). ---> //
-        public int ModifyUsers(string Usrname, string UsrLname, string UsrUsername, string UsrEmail, string UsrPass, int Usrid){
+        public int ModifyUsers(string Usrname, string UsrLname, string UsrUsername, string UsrEmail, string UsrPass, int UsridRol, int Usrid){
             // Inserción a "SQL".
             /*
                Esta variable selecciona de la tabla "Users" los siguientes datos de los campos correspondientes:
-               1. usrName.       3. usrUsername.  5. usrId.
+               1. usrName.       3. usrUsername.  5. usrId.    7. usrRol
                2. ustLname.      4. usrEmail.     6. usrPass.
                Seleccina esos campos para tener acceso a ellos y poder actualizarlos.
             */
-            string sql = "UPDATE Users SET usrName='" + Usrname + "', usrLname='" + UsrLname + "', usrUsername='" + UsrUsername + "', usrEmail='" + UsrEmail + "', usrPass='" + UsrPass + "' WHERE usrId='" + Usrid + "'";
+            string sql = "UPDATE Users SET usrName='" + Usrname + "', usrLname='" + UsrLname + "', usrUsername='" + UsrUsername + "', usrEmail='" + UsrEmail + "', usrPass='" + UsrPass + "', usrRol='" + UsridRol + "' WHERE usrId='" + Usrid + "'";
 
             // Referencia a la clase de nombre "SQLConnection".
             SqlConnection connection = SQLConnection.getConnection();

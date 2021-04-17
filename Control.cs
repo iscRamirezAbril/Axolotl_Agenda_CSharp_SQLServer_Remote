@@ -110,7 +110,7 @@ namespace ProyectoFinal
         }
 
         // <--- Método #3: Modificación de datos de usuario (Sólo administradores) ---> //
-        public string ctrlModifyAdmin(string usrName, string usrLname, string usrUsername, string usrEmail, string usrPass, int usrId){
+        public string ctrlModifyAdmin(string usrName, string usrLname, string usrUsername, string usrEmail, string usrPass, int usridRol, int usrId){
             Model model = new Model(); // Se crea una instancia de la clase "Model".
 
             // Declaración de variable. Esta almacenará los mensajes de error que correspondan.
@@ -123,12 +123,12 @@ namespace ProyectoFinal
             */
             if (string.IsNullOrEmpty(usrName) || string.IsNullOrEmpty(usrLname) ||
                 string.IsNullOrEmpty(usrUsername) || string.IsNullOrEmpty(usrEmail)
-                || string.IsNullOrEmpty(usrPass))
+                || string.IsNullOrEmpty(usrPass) || Convert.ToString(usridRol) == "")
                 errorMessage = "Todos los campos son obligatorios..."; // Mensaje de error.
 
             else{
                 // Llamada al método "ModifyUsers()".
-                model.ModifyUsers(usrName, usrLname, usrUsername, usrEmail, usrPass, usrId);
+                model.ModifyUsers(usrName, usrLname, usrUsername, usrEmail, usrPass, usridRol, usrId);
             }
 
             return errorMessage; // Retorno del mensaje de error.

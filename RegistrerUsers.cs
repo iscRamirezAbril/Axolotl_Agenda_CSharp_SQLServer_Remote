@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Librerías para el envío de correos electrónicos.
+using System.Net;
+using System.Net.Mail;
+
 namespace ProyectoFinal
 {
     public partial class RegistrerUsers : Form{
@@ -203,12 +207,18 @@ namespace ProyectoFinal
                 else{
                     // "MessageBox" que se mostrará al usuario para confirmar su registro.
                     if(MessageBox.Show("¡Usuario registrado! \n¡Ya puede iniciar sesión y empezar a utilizar nuestra aplicación!", "Datos registrados.", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK){
+                        WelcomeEmail(); // Llamada al método que envía el correo de bienvenida.
+                        
                         Login LoginForm = new Login(); // Creación de un objeto de la clase "Login".
                         LoginForm.Show(); // ".Show()" permitirá mostrar el formulario de inicio de sesión.
                         this.Hide(); // ".Hide() ocultará el formulario actual (RegistrerUsers).
                     }           
                 }
             } 
+            /*
+               Excepción que sólo se presentará si se presenta algún tipo de error al momento de realizar
+               el registro.
+            */
             catch(Exception ex){
                 MessageBox.Show(ex.Message);
             }
@@ -245,6 +255,34 @@ namespace ProyectoFinal
         // <--- Botón "btnMinimize". ---> //
         private void btnMinimize_Click(object sender, EventArgs e){
             this.WindowState = FormWindowState.Minimized; // Permite minimizar la ventana.
+        }
+
+        // <---------------------------------------> //
+        // <---------- MÉTODOS / METHODS ----------> //
+        // <---------------------------------------> //
+
+        // <--- Método #1: Envío de email de bienvenida a la aplicación. ---> //
+        private void WelcomeEmail(){
+            // Se crea un objeto de la clase "MailMessage".
+            MailMessage mail = new MailMessage();
+            // Se crea un objeto de la clase "Smtp". Dentro de los paréntesis se escribe el "smtp" correspondiente a la compañía de correo.
+            SmtpClient SmtpServerCopy = new SmtpClient("smtp.gmail.com");
+
+            mail.To.Add(txtSignEmail.Text); // Correo que va a recibir la copia del "Feedback".
+            mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
+            mail.Subject = "WELCOME TO AXOLOTL AGENDA! :D"; // "Asunto" del correo.
+            // Cuerpo del correo.
+            mail.Body = "¡Bienvenid@ " + txtSignName.Text + " " + txtSignLastName.Text + "!" +
+                "\nGracias por registrarte. Esperamos que esta aplicación sea de su agrado." +
+                "\n\nEl propósito de esta aplicación es que usted pueda llevar un control limpio" +
+                "y ordenado de sus actividades cotidianas, ofreciendole una interfaz limpia y discreta." +
+                "\n\n¡Disfrutela y aprovechela al máximo! =)";
+
+            SmtpServerCopy.Port = 587; // Puerto.
+            SmtpServerCopy.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.
+                                             // Asignación de credenciales del correo de soporte. Se pide el correo y contraseña del mismo.
+            SmtpServerCopy.Credentials = new NetworkCredential("Axolotlteam.helpusers@gmail.com", "kueuhrvtvfjefufs");
+            SmtpServerCopy.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
         }
     }
 }
