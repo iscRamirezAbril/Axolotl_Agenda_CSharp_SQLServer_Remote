@@ -51,10 +51,10 @@ namespace ProyectoFinal
             Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
             string errorMessage = ctrl.ctrlregisterAdmins(user); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
                                         // "MessageBox" que se mostrará al usuario para avisar de algun error.
-            if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else{
                 // "MessageBox" que se mostrará al usuario para confirmar su registro.
-                MessageBox.Show("¡Usuario registrado con éxito!", "Datos registrados.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Successfully registered user!", "Recorded data.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clean(); // Llamada al método para limpiar los textbox.
                 ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
             }
@@ -82,10 +82,10 @@ namespace ProyectoFinal
             Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
             string respuesta = ctrl.ctrlModifyAdmin(UsrName, UsrLname, UsrUsername, UsrEmail, UsrPass, UsridRol, UsrId); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
                                         // "MessageBox" que se mostrará al usuario para avisar de algun error.
-            if (respuesta.Length > 0) MessageBox.Show(respuesta, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (respuesta.Length > 0) MessageBox.Show(respuesta, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else{
                 // MessageBox que se muestra cuando los datos del usuario se modifican con éxito.
-                MessageBox.Show("¡Datos de usuario modificados con éxito!", "Datos de usuario actualizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User data successfully modified!", "Updated user data.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clean(); // Llamada al método para limpiar los textbox.
                 ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
             }
@@ -100,14 +100,14 @@ namespace ProyectoFinal
             int usrId = Convert.ToInt32(txtId.Text);
 
             // Condición que sólo se ejecutará si el administrador dá click al botón "Yes" del MessageBox.
-            if (MessageBox.Show("¿Seguro que quiere eliminar a este usuario de la Base de Datos?" +
-                "\n¡No podrá recuperar los datos!", "¡Aviso!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes){
+            if (MessageBox.Show("Are you sure you want to remove this user from the Database?" +
+                "\nYou will not be able to recover the data!", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes){
 
                 Model model = new Model(); // Creación de un objeto de la clase "Model".
                 model.DeleteAccount(usrId);
 
                 // MessageBox que se muestra cuando los datos del usuario se eliminan con éxito.
-                MessageBox.Show("¡Usuario eliminado de la Base de Datos!", "Usuario eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User removed from the Database!", "User removed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clean(); // Llamada al método para limpiar los textbox.
                 ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
             }

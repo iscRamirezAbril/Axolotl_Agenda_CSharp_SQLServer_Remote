@@ -104,12 +104,10 @@ namespace ProyectoFinal
                o después de escribir su nombre, dichos espacios no se mostrarán en la salida de datos.
             */
             if (txtUser.Text.Trim() == "USERNAME"){
-                errorPUsername.SetError(txtUser, "Para continuar, debe escribir su nombre de usuario..."); // Este es el error que se mostrará al momento de ubicar el cursor en el ícono de error.
+                errorPUsername.SetError(txtUser, "To continue, you must enter your username..."); // Este es el error que se mostrará al momento de ubicar el cursor en el ícono de error.
                 txtUser.Focus(); // ".Focus()" tiene la función de no permitir al usuario cambiar de textbox hasta que llene el textbox correspondiente.
             }
-            else{
-                errorPUsername.Clear(); // Cuando el usuario haya escrito su "username", el error desaparecerá.
-            }
+            else errorPUsername.Clear(); // Cuando el usuario haya escrito su "username", el error desaparecerá.
         }
 
         // <--- Evento #8: "Validated". ---> //
@@ -121,7 +119,7 @@ namespace ProyectoFinal
                o después de escribir su nombre, dichos espacios no se mostrarán en la salida de datos.
             */
             if (txtPass.Text.Trim() == "PASSWORD"){
-                errorPPassword.SetError(txtPass, "Debe escribir su contraseña para continuar..."); // Este es el error que se mostrará al momento de ubicar el cursor en el ícono de error.
+                errorPPassword.SetError(txtPass, "You must enter your password to continue..."); // Este es el error que se mostrará al momento de ubicar el cursor en el ícono de error.
                 txtPass.Focus(); // ".Focus()" tiene la función de no permitir al usuario cambiar de textbox hasta que llene el textbox correspondiente.
             }
             else{
@@ -159,7 +157,7 @@ namespace ProyectoFinal
 
         // <--- Botón "btnClose". ---> //
         private void btnClose_Click(object sender, EventArgs e){
-            if(MessageBox.Show("¿Seguro que quiere salir de la aplicación?", "Salida del programa.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
+            if(MessageBox.Show("Are you sure you want to exit the application?", "Program exit.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
                 Application.Exit(); // Salida de la aplicación.
             }
         }
@@ -193,7 +191,7 @@ namespace ProyectoFinal
                 */
                 if (respuesta.Length > 0){ 
                     // MessageBox a mostrar.
-                    MessageBox.Show(respuesta, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(respuesta, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 /*
                    Condición que sólo es válida sí y sólo sí el usuario ingresa sus datos correctamente.
@@ -211,7 +209,7 @@ namespace ProyectoFinal
             */
             catch(Exception ex){
                 // MessageBox a mostrar.
-                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

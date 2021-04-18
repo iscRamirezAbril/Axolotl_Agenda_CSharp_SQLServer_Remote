@@ -148,11 +148,11 @@ namespace ProyectoFinal
 
                 if (errorMessage.Length > 0){
                     // "MessageBox" que se mostrará al usuario para avisar de algun error.
-                    MessageBox.Show(errorMessage, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(errorMessage, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else{
                     // "MessageBox" que se mostrará al usuario para confirmar su registro.
-                    MessageBox.Show("¡Actividad registrada con éxito!", "Datos registrados.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Activity successfully registered!", "Registered data.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clean(); // Llamada al método para limpiar los textbox.
                     ReloadActTable(null); // Llamada al método que permite actualizar la tabla.
                 }
@@ -169,14 +169,14 @@ namespace ProyectoFinal
             string ActName = txtName.Text;
 
             // Condición que sólo se ejecutará sí y sólo sí el usuario presiona el botón "Yes" del MessageBox.
-            if(MessageBox.Show("¿Seguro que quiere eliminar la actividad?\nTendrá que registrarla de nuevo.", 
-                "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
+            if(MessageBox.Show("Are you sure you want to eliminate the activity?\nYou will have to register it again!", 
+                "Warning.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
 
                 Model model = new Model(); // Creación de un objeto de la clase "Model".
                 model.DeleteAct(ActName);
 
                 // MessageBox que se muestra cuando los datos de la actividad se eliminan con éxito.
-                MessageBox.Show("¡Actividad eliminada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Activity removed!", "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clean(); // Llamada al método para limpiar los textbox.
                 ReloadActTable(null); // Llamada al método que permite actualizar la tabla.
             }

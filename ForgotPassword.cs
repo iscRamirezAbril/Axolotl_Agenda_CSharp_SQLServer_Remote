@@ -105,7 +105,7 @@ namespace ProyectoFinal
                Condición que sólo funcionará sí y sólo sí el usuario presiona el botón de
                "YES" del MessageBox.
             */
-            if (MessageBox.Show("¿Seguro que quiere volver a la pantalla principal? \n¡Si no mandó solicitud para recuperar su contraseña, tendrá que solicitarla de nuevo!", "¡Cuidado!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+            if (MessageBox.Show("Are you sure you want to go back to the main screen? \nIf you did not send in a request to retrieve your password, you will have to request it again!", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
                 Login LoginForm = new Login(); // Creación de un objeto de la clase "Login".
                 LoginForm.Show(); // ".Show()" permitirá mostrar el formulario de inicio de sesión.
                 this.Hide(); // ".Hide() ocultará el formulario actual (RegistrerUsers).
@@ -141,8 +141,8 @@ namespace ProyectoFinal
                     paswordRecoveryMail(); // Llamada al método que envía un correo para recuperación de contraseña.
 
                     // MessageBox que se mostrará si el usuario llena los campos correctamente.
-                    MessageBox.Show("Su solicitud a sido enviada con éxito :)" +
-                        "\nFavor de revisar su correo " + "(" + txtEmail.Text + ") para más información.", "Aviso",
+                    MessageBox.Show("Your request has been sent successfully :)" +
+                        "\nPlease check your email " + "(" + txtEmail.Text + ") for more information.", "Notice",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Llamada al form de Inicio de sesión.
@@ -157,7 +157,7 @@ namespace ProyectoFinal
             */
             catch(Exception ex){
                 // MessageBox a mostrar.
-                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -178,9 +178,9 @@ namespace ProyectoFinal
             mail.Subject = "PASSWORD RECOVERY."; // "Asunto" del correo.
 
             // Cuerpo del correo.
-            mail.Body = "Usted a solicitado recuperar su contraseña." +
-                "\nLa contraseña para su inicio de sesión es: " + Session.password +
-                "\nLe recomendamos que guarde su contraseña en un lugar seguro y fácil de recordar." +
+            mail.Body = "You have requested to recover your password." +
+                "\nThe password for your login is: " + Session.password +
+                "\nWe recommend that you keep your password in a safe and easy to remember place." +
                 "\n\nAtte. Axolotl Team Support.";
             // FIN //
 
@@ -194,35 +194,6 @@ namespace ProyectoFinal
             SmtpServer.Send(mail); // ".Send() es el método que permitirá mandar el mensaje.
             // FIN //
             // FIN DEL BLOQUE DE CÓDIGO DE INSTRUCCIONES DEL FEEDBACK QUE RECIBIRÁ "coreodelusuario@gmail.com".
-            
-            /*
-            var fromAddress = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
-            var toAdress = new MailAddress(email, username);
-            const string fromPassword = "kueuhrvtvfjefufs";
-            const string subject = "[AxoltlAgenda] Recuperación de contraseña.";
-
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
-
-            using (var message = new MailMessage(fromAddress, toAdress)
-            {
-                Subject = subject,
-                Body = "Usted a solicitado recuperar su contraseña." +
-                "\nLa contraseña para su inicio de sesión es: " + Session.password +
-                "\nLe recomendamos que guarde su contraseña en un lugar seguro y fácil de recordar." +
-                "\n\nAtte. Axolotl Team Support."
-            })
-            {
-                smtp.Send(message);
-            }
-            */
         }
     }
 }

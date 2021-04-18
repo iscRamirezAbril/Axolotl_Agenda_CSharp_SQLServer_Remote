@@ -50,7 +50,7 @@ namespace ProyectoFinal
                     EmailMessageUser();
 
                     // MessageBox que se mostrará cuando el usuario llene los campos correctamente.
-                    MessageBox.Show("¡Gracias por su opinión! :D \nLa información se envió con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thank you for your feedback! :D \nThe information was sent successfully.", "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Clear(); // Llamada al método que reinicia al Form.
                 }
@@ -61,7 +61,7 @@ namespace ProyectoFinal
             */
             catch (Exception ex){
                 // MessageBox a mostrar.
-                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -78,7 +78,7 @@ namespace ProyectoFinal
             foreach (char Letter in Encoding.ASCII.GetBytes(txtName.Text))
                 if (Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122){
                     // Mensaje de error que se desplegará al momento de detectar el error.
-                    MessageBox.Show("Solo puede ingresar letras...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You can only enter letters...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtName.Text = ""; // Se vacía el textbox.
                 }
         }
@@ -92,7 +92,7 @@ namespace ProyectoFinal
             foreach (char Letter in Encoding.ASCII.GetBytes(txtLastName.Text))
                 if (Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122){
                     // Mensaje de error que se desplegará al momento de detectar el error.
-                    MessageBox.Show("Solo puede ingresar letras...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You can only enter letters...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtLastName.Text = ""; // Se vacía el textbox.
                 }
         }
@@ -110,11 +110,11 @@ namespace ProyectoFinal
             // Declaración de una variable donde se almacenará la respuesta correspondiente al "radiobutton" seleccionado.
             string answer = "";
             // Condiciones que regresarán el mensaje que corresponde a cada radiobutton.
-            if (radiobtnExcellent.Checked) answer = "Excelente.";
-            else if (radiobtnGood.Checked) answer = "Buena.";
-            else if (radiobtnAverage.Checked) answer = "Media.";
-            else if (radiobtnPoor.Checked) answer = "Mala.";
-            else if (radiobtnWorst.Checked) answer = "Muy mala.";
+            if (radiobtnExcellent.Checked) answer = "Excellent.";
+            else if (radiobtnGood.Checked) answer = "Good";
+            else if (radiobtnAverage.Checked) answer = "Average";
+            else if (radiobtnPoor.Checked) answer = "Poor";
+            else if (radiobtnWorst.Checked) answer = "Worst.";
 
             return answer; // Retorno de valor.
         }
@@ -132,7 +132,7 @@ namespace ProyectoFinal
             string comment = "";
 
             // Condición que sólo se activará si y sólo sí el usuario no insertó un comentario.
-            if (string.IsNullOrEmpty(txtComments.Text)) comment = "No existe.";
+            if (string.IsNullOrEmpty(txtComments.Text)) comment = "No additional comments.";
             else comment = txtComments.Text;
 
             return comment; // Retorno de valor.
@@ -166,11 +166,11 @@ namespace ProyectoFinal
             msg.From = new MailAddress(txtEmail.Text, Session.name + "'s" + " Feedback", Encoding.UTF8);
             msg.Subject = "FEEDBACK AXOLOTL AGENDA."; // "Asunto" del correo.
                                                       // Cuerpo del correo.
-            msg.Body = "Los datos del Feedback son los siguientes:" +
-                "\n- Nombre del usuario: " + txtName.Text +
-                "\n- Apellido del usuario: " + txtLastName.Text +
-                "\n- Calificación de la App: " + SelectedOptions() +
-                "\n- Mensaje opcional del usuario: " + Comment();
+            msg.Body = "The feedback data are as follows:" +
+                "\n- User name: " + txtName.Text +
+                "\n- User Last name: " + txtLastName.Text +
+                "\n- App Rating: " + SelectedOptions() +
+                "\n- Comment from user: " + Comment();
 
             // Este bloque de código servirá para dar credenciales al correo electrónico del usuario.
             SmtpServer.Port = 587; // Puerto.
@@ -191,11 +191,11 @@ namespace ProyectoFinal
             mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
             mail.Subject = "COPY OF FEEDBACK AXOLOTL AGENDA."; // "Asunto" del correo.
                                                                // Cuerpo del correo.
-            mail.Body = "¡Gracias por su opinión!" + "\nLos datos del Feedback que usted registró son los siguientes:" +
-                "\n- Nombre del usuario: " + txtName.Text +
-                "\n- Apellido del usuario: " + txtLastName.Text +
-                "\n- Calificación de la App: " + SelectedOptions() +
-                "\n- Mensaje opcional del usuario: " + Comment();
+            mail.Body = "Thank you for your feedback!" + "\nThe Feedback data you recorded is as follows:" +
+                "\n- Your name: " + txtName.Text +
+                "\n- Your last name: " + txtLastName.Text +
+                "\n- Your App rating: " + SelectedOptions() +
+                "\n- Your comments: " + Comment();
 
             SmtpServerCopy.Port = 587; // Puerto.
             SmtpServerCopy.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.

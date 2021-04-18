@@ -202,11 +202,11 @@ namespace ProyectoFinal
 
                 if (answer.Length > 0){
                     // "MessageBox" que se mostrará al usuario para avisar de algun error.
-                    MessageBox.Show(answer, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(answer, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else{
                     // "MessageBox" que se mostrará al usuario para confirmar su registro.
-                    if(MessageBox.Show("¡Usuario registrado! \n¡Ya puede iniciar sesión y empezar a utilizar nuestra aplicación!", "Datos registrados.", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK){
+                    if(MessageBox.Show("Registered user! \nYou can now log in and start using our application!", "Registered data.", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK){
                         WelcomeEmail(); // Llamada al método que envía el correo de bienvenida.
                         
                         Login LoginForm = new Login(); // Creación de un objeto de la clase "Login".
@@ -245,7 +245,7 @@ namespace ProyectoFinal
                Condición que sólo funcionará sí y sólo sí el usuario presiona el botón de
                "YES" del MessageBox.
             */
-            if(MessageBox.Show("¿Seguro que quiere volver a la pantalla principal? \n¡Todos sus datos no se registrarán y se perderán!", "¡Cuidado!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes){
+            if(MessageBox.Show("Are you sure you want to return to the main screen? \nAll your data will not be recorded and lost!", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes){
                 Login LoginForm = new Login(); // Creación de un objeto de la clase "Login".
                 LoginForm.Show(); // ".Show()" permitirá mostrar el formulario de inicio de sesión.
                 this.Hide(); // ".Hide() ocultará el formulario actual (RegistrerUsers).
@@ -273,10 +273,10 @@ namespace ProyectoFinal
             mail.Subject = "WELCOME TO AXOLOTL AGENDA! :D"; // "Asunto" del correo.
             // Cuerpo del correo.
             mail.Body = "¡Bienvenid@ " + txtSignName.Text + " " + txtSignLastName.Text + "!" +
-                "\nGracias por registrarte. Esperamos que esta aplicación sea de su agrado." +
-                "\n\nEl propósito de esta aplicación es que usted pueda llevar un control limpio" +
-                "y ordenado de sus actividades cotidianas, ofreciendole una interfaz limpia y discreta." +
-                "\n\n¡Disfrutela y aprovechela al máximo! =)";
+                "\nThank you for registering. We hope you enjoy this application." +
+                "\n\nThe purpose of this application is for you to keep a clean and " +
+                "orderly control of your daily activities, offering a clean and discreet interface." +
+                "\n\nEnjoy it and make the most of it! =)";
 
             SmtpServerCopy.Port = 587; // Puerto.
             SmtpServerCopy.EnableSsl = true; // Habilitar "uso de aplicaciones poco seguras" para el correo del usuario.

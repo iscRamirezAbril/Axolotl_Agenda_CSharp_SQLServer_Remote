@@ -30,14 +30,14 @@ namespace ProyectoFinal
             if (string.IsNullOrEmpty(user.UsrName) || string.IsNullOrEmpty(user.UsrLname) ||
                 string.IsNullOrEmpty(user.UsrUsername) || string.IsNullOrEmpty(user.UsrPass) ||
                 string.IsNullOrEmpty(user.UsrConPass) || string.IsNullOrEmpty(user.UsrEmail))
-                errorMessage = "Debe llenar todos los campos"; // Mensaje de error.
+                errorMessage = "All fields are required."; // Mensaje de error.
 
             // <--- Validación #2: Revisión de coincidencia en contraseñas. ---> //
             else{
                 // Condición que hace una revisión de las contraseñas, confirmando que coincidan.
                 if (user.UsrPass == user.UsrConPass){
                     // Mensaje de error que se mostrará sólo si el nombre de usuario insertado ya existe.
-                    if (model.existUser(user.UsrUsername)) errorMessage = "El nombre de usuario ya existe. \nFavor de elegir otro nombre...";
+                    if (model.existUser(user.UsrUsername)) errorMessage = "The username already exists. \nPlease choose another one...";
                     else{
                         /*
                           La contraseña insertada por el usuario se encriptará (para eso se llama al método
@@ -60,7 +60,7 @@ namespace ProyectoFinal
                 }
                 else
                     // Mensaje de error que se mostrará si las contraseñas no coinciden.
-                    errorMessage = "Las contraseñas no coinciden. \nFavor de interntarlo nuevamente =).";
+                    errorMessage = "Passwords do not match. \nPlease try again. =).";
             }
             return errorMessage; // Retorno del mensaje de error.
         }
@@ -80,12 +80,12 @@ namespace ProyectoFinal
             if (string.IsNullOrEmpty(userAdmin.UsrName) || string.IsNullOrEmpty(userAdmin.UsrLname) ||
                 string.IsNullOrEmpty(userAdmin.UsrUsername) || string.IsNullOrEmpty(userAdmin.UsrPass)
                 || string.IsNullOrEmpty(userAdmin.UsrEmail))
-                errorMessage = "Debe llenar todos los campos"; // Mensaje de error.
+                errorMessage = "All fields are required."; // Mensaje de error.
 
             // <--- Validación #2: Revisión de usuario existente. ---> //
             else{
                 // Mensaje de error que se mostrará sólo si el nombre de usuario insertado ya existe.
-                if (model.existUser(userAdmin.UsrUsername)) errorMessage = "El nombre de usuario ya existe. \nFavor de elegir otro nombre...";
+                if (model.existUser(userAdmin.UsrUsername)) errorMessage = "The username already exists. \nPlease choose another one...";
                 else{
                     /*
                         La contraseña insertada por el usuario se encriptará (para eso se llama al método
@@ -124,7 +124,7 @@ namespace ProyectoFinal
             if (string.IsNullOrEmpty(usrName) || string.IsNullOrEmpty(usrLname) ||
                 string.IsNullOrEmpty(usrUsername) || string.IsNullOrEmpty(usrEmail)
                 || string.IsNullOrEmpty(usrPass) || Convert.ToString(usridRol) == "")
-                errorMessage = "Todos los campos son obligatorios..."; // Mensaje de error.
+                errorMessage = "All fields are required."; // Mensaje de error.
 
             else{
                 // Llamada al método "ModifyUsers()".
@@ -147,10 +147,10 @@ namespace ProyectoFinal
                ".IsNullOrEmpty() verifica que el campo esté vacío o sea "nulo". de ser así, la condición se cumple.
             */
             if (usrName == "" || usrLname == "" || usrUsername == ""|| usrEmail == "" || usrPass == "")
-                errorMessage = "Los campos no deben estar vacíos.";
+                errorMessage = "All fields are required.";
 
             // <--- Validación #2: Verificar que las contraseñas coincidan. ---> //
-            else if (Session.password != usrPass) errorMessage = "Contraseña incorrecta.\nFavor de intentarlo nuevamente.";
+            else if (Session.password != usrPass) errorMessage = "Incorrect password. \nPlease try again.";
             else model.updateSessionData(usrName, usrLname, usrUsername, usrEmail);
 
             return errorMessage;
@@ -166,7 +166,7 @@ namespace ProyectoFinal
 
             // <--- Validación #1: Verificar que los campos estén vacíos. ---> //
             // Condición que solo es válida sí y sólo sí el usuario no ha insertado su "username" y "password".
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) errorMessage = "Debe llenar todos los campos..."; // Mensaje de error.
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) errorMessage = "All fields are required."; // Mensaje de error.
 
             // <--- Validación #2: Traer datos de Sql a mi consulta. ---> //
             else{
@@ -179,7 +179,7 @@ namespace ProyectoFinal
 
                 // <--- Validación #3: Usuario no registrado.. ---> //
                 // Condición que sólo sea válida sí y sólo sí el usuario no se encuentra o no existe.
-                if (userData == null) errorMessage = "El usuario no existe."; // Mensaje de error.
+                if (userData == null) errorMessage = "The user does not exist."; // Mensaje de error.
 
                 // <--- Validación #3: Usuario registrado. ---> //
                 else{
@@ -189,7 +189,7 @@ namespace ProyectoFinal
                        Como la contraseña que ingresa el usuario no está en formato "Base 64", se llamará al método "Encrypt"
                        para realizar dicha conversión, permitiendo que el método funcione correctamente.
                     */
-                    if (userData.UsrPass != Encrypt(password)) errorMessage = "El usuario y/o contraseñas no coinciden..."; // Mensaje de error.
+                    if (userData.UsrPass != Encrypt(password)) errorMessage = "The user and/or passwords do not match..."; // Mensaje de error.
 
                     // <--- Validación #4: Datos de usuario que está iniciando sesión. ---> //
                     else{
@@ -226,7 +226,7 @@ namespace ProyectoFinal
             // <--- Validación #1: Verificar que los campos estén vacíos. ---> //
             // Condición que solo es válida sí y sólo sí el usuario no ha insertado su "username" y "password".
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email))
-                errorMessage = "Debe llenar todos los campos..."; // Mensaje de error.
+                errorMessage = "All fields are required."; // Mensaje de error.
 
             // <--- Validación #2: Traer datos de Sql a mi consulta. ---> //
             else{
@@ -239,7 +239,7 @@ namespace ProyectoFinal
 
                 // <--- Validación #3: Usuario no registrado.. ---> //
                 // Condición que sólo sea válida sí y sólo sí el usuario no se encuentra o no existe.
-                if (userData == null) errorMessage = "Lo sentimos, no tenemos a algún usuario registrado con ese nombre."; // Mensaje de error.
+                if (userData == null) errorMessage = "Sorry, we don't have any users registered with that name."; // Mensaje de error.
 
                 else{
                     // A las propiedades "username" y "password" se les asigna los datos correspondientes.
@@ -262,7 +262,7 @@ namespace ProyectoFinal
             // <--- Validación #1: Verificar que los campos estén vacíos. ---> //
             // Condición que solo es válida sí y sólo sí el usuario no ha insertado su "username" y "password".
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email))
-                errorMessage = "Los campos principales son obligatorios."; // Mensaje de error.
+                errorMessage = "Main fields are required."; // Mensaje de error.
 
             return errorMessage; // Retorno del mensaje de error.
         }
@@ -281,15 +281,19 @@ namespace ProyectoFinal
             */
             if (string.IsNullOrEmpty(activity.ActName) || string.IsNullOrEmpty(activity.ActType) || string.IsNullOrEmpty(Convert.ToString(activity.ActStart))
                 || string.IsNullOrEmpty(Convert.ToString(activity.ActEnd)))
-                errorMessage = "Debe llenar todos los campos."; // Mensaje de error.
-            else{
-                activity.ActUserid = Session.id; // A la propiedad "ActUserid" se le asignará el "Id" del usuario que tiene su sesión iniciada.
-                /*
-                  Se llama al método "registro" de la clase "model" que se le enviará el objeto "activity",
-                  ya que, ese objeto contiene todos los datos de la actividad registrada.
-                */
-                model.newAct(activity);
-            }
+
+                // <--- Validación #2: Verificar el registro de valores predeterminados ---> //
+                // Condición que se activará sí y sólo sí alguno de los campos tienen el texto predeterminado.
+                if (activity.ActName == "ACTIVITY NAME" || activity.ActType == "---SELECT---" || Convert.ToString(activity.actStart) == "START"
+                    || Convert.ToString(activity.actEnd) == "END") errorMessage = "All fields are required."; // Mensaje de error.
+                else{
+                    activity.ActUserid = Session.id; // A la propiedad "ActUserid" se le asignará el "Id" del usuario que tiene su sesión iniciada.
+                    /*
+                      Se llama al método "registro" de la clase "model" que se le enviará el objeto "activity",
+                      ya que, ese objeto contiene todos los datos de la actividad registrada.
+                    */
+                    model.newAct(activity);
+                }
 
             return errorMessage; // Retorno del mensaje de error.
         }

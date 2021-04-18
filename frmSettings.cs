@@ -115,8 +115,8 @@ namespace ProyectoFinal
 
                 else{
                     // MessageBox a mostrar cuando los datos del usuario se actualicen correctamente.
-                    MessageBox.Show("¡Información actualizada con éxito!" +
-                        "\nPara visualizarlos correctamente, le recomendamos cerrar y abrir sesión de nuevo.", "Actualización de datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Successfully updated information!" +
+                        "\nTo view them correctly, we recommend that you log out and log in again.", "Data update.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
