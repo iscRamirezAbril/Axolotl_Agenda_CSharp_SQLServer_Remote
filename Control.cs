@@ -184,7 +184,7 @@ namespace ProyectoFinal
                 // Condición que sólo sea válida sí y sólo sí el usuario no se encuentra o no existe.
                 if (userData == null) errorMessage = "The user does not exist."; // Mensaje de error.
 
-                // <--- Validación #3: Usuario registrado. ---> //
+                // <--- Validación #4: Usuario registrado. ---> //
                 else{
                     /* 
                        Condición que sólo sea válida sí y sólo sí la contraseña registrada en la base de datos (Base 64)
@@ -194,7 +194,7 @@ namespace ProyectoFinal
                     */
                     if (userData.UsrPass != Encrypt(password)) errorMessage = "The user and/or passwords do not match..."; // Mensaje de error.
 
-                    // <--- Validación #4: Datos de usuario que está iniciando sesión. ---> //
+                    // <--- Validación #5: Datos de usuario que está iniciando sesión. ---> //
                     else{
                         /*
                            Asignación de la propiedad de la clase "registro_usuarios" al objeto "userData"
@@ -228,10 +228,13 @@ namespace ProyectoFinal
 
             // <--- Validación #1: Verificar que los campos estén vacíos. ---> //
             // Condición que solo es válida sí y sólo sí el usuario no ha insertado su "username" y "password".
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email))
-                errorMessage = "All fields are required."; // Mensaje de error.
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email)) errorMessage = "All fields are required."; // Mensaje de error.
 
-            // <--- Validación #2: Traer datos de Sql a mi consulta. ---> //
+            // <--- Validación #2: Datos no iguales a los predeterminados.
+            // Condición que se activará sí y sólo sí alguno de los valores son identicos a los predeterminados en los "textboxes".
+            else if (username == "USERNAME" || email == "EMAIL") errorMessage = "All fields are required."; // Mensaje de error.
+            
+            // <--- Validación #3: Traer datos de Sql a mi consulta. ---> //
             else{
                 // El dato que se recupere de la base de datos se le asignará a la variable "userData".
                 /*
@@ -282,13 +285,11 @@ namespace ProyectoFinal
             /*
                ".IsNullOrEmpty() verifica que el campo esté vacío o sea "nulo". de ser así, la condición se cumple.
             */
-            if (string.IsNullOrEmpty(activity.ActName) || string.IsNullOrEmpty(activity.ActType) || string.IsNullOrEmpty(Convert.ToString(activity.ActStart))
-                || string.IsNullOrEmpty(Convert.ToString(activity.ActEnd)))
+            if (string.IsNullOrEmpty(activity.ActName) || string.IsNullOrEmpty(activity.ActType) || string.IsNullOrEmpty(Convert.ToString(activity.ActStart)) || string.IsNullOrEmpty(Convert.ToString(activity.ActEnd))) errorMessage = "All fields are required."; // Mensaje de error.
 
-                // <--- Validación #2: Verificar el registro de valores predeterminados ---> //
-                // Condición que se activará sí y sólo sí alguno de los campos tienen el texto predeterminado.
-                if (activity.ActName == "ACTIVITY NAME" || activity.ActType == "---SELECT---" || Convert.ToString(activity.actStart) == "START"
-                    || Convert.ToString(activity.actEnd) == "END") errorMessage = "All fields are required."; // Mensaje de error.
+            // <--- Validación #2: Verificar el registro de valores predeterminados ---> //
+            // Condición que se activará sí y sólo sí alguno de los campos tienen el texto predeterminado.
+            else if (activity.ActName == "ACTIVITY NAME" || activity.ActType == "---SELECT---" || Convert.ToString(activity.actStart) == "START" || Convert.ToString(activity.actEnd) == "END") errorMessage = "All fields are required."; // Mensaje de error.
                 else{
                     activity.ActUserid = Session.id; // A la propiedad "ActUserid" se le asignará el "Id" del usuario que tiene su sesión iniciada.
                     /*
