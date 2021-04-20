@@ -51,13 +51,13 @@ namespace ProyectoFinal
             this.label3 = new System.Windows.Forms.Label();
             this.btnDates = new System.Windows.Forms.Button();
             this.dataGridActivities = new System.Windows.Forms.DataGridView();
-            this.activitiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.actIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actUseridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actStartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actEndDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activitiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBAct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActivities)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesBindingSource)).BeginInit();
@@ -167,6 +167,7 @@ namespace ProyectoFinal
             this.txtName.Size = new System.Drawing.Size(146, 20);
             this.txtName.TabIndex = 4;
             this.txtName.Text = "ACTIVITY NAME";
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             this.txtName.Enter += new System.EventHandler(this.txtName_Enter);
             this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
@@ -326,10 +327,6 @@ namespace ProyectoFinal
             this.dataGridActivities.TabIndex = 11;
             this.dataGridActivities.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridActivities_CellClick);
             // 
-            // activitiesBindingSource
-            // 
-            this.activitiesBindingSource.DataSource = typeof(ProyectoFinal.Activities);
-            // 
             // actIdDataGridViewTextBoxColumn
             // 
             this.actIdDataGridViewTextBoxColumn.DataPropertyName = "ActId";
@@ -367,6 +364,10 @@ namespace ProyectoFinal
             this.actEndDataGridViewTextBoxColumn.DataPropertyName = "ActEnd";
             this.actEndDataGridViewTextBoxColumn.HeaderText = "End";
             this.actEndDataGridViewTextBoxColumn.Name = "actEndDataGridViewTextBoxColumn";
+            // 
+            // activitiesBindingSource
+            // 
+            this.activitiesBindingSource.DataSource = typeof(ProyectoFinal.Activities);
             // 
             // frmMenu
             // 

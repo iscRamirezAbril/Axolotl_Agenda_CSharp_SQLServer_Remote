@@ -51,26 +51,6 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #3: "MouseDown". ---> //
-        /*
-          Este evento nos permitirá mover el formulario desde el panel.
-        */
-        private void panelLogo_MouseDown(object sender, MouseEventArgs e) {
-            // Llamada a los métodos.
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        // <--- Evento #4: "MouseDown". ---> //
-        /*
-          Este evento nos permitirá mover el formulario desde el panel.
-        */
-        private void ForgotPassword_MouseDown(object sender, MouseEventArgs e) {
-            // Llamada a los métodos.
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         // <--- Evento #5: "Enter". ---> //
         /*
            Este evento sólo se "activará" si el cursor del Mouse se encuentra dentro de la 
@@ -93,6 +73,58 @@ namespace ProyectoFinal
                 txtUsername.Text = "USERNAME"; // Texto a mostrar.
                 txtUsername.ForeColor = Color.FromArgb(64, 64, 64); // Color de texto.
             }
+        }
+
+        // <--- Evento #3: "MouseDown". ---> //
+        /*
+          Este evento nos permitirá mover el formulario desde el panel.
+        */
+        private void panelLogo_MouseDown(object sender, MouseEventArgs e){
+            // Llamada a los métodos.
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        // <--- Evento #4: "MouseDown". ---> //
+        /*
+          Este evento nos permitirá mover el formulario desde el panel.
+        */
+        private void ForgotPassword_MouseDown(object sender, MouseEventArgs e){
+            // Llamada a los métodos.
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        // <--- Evento #5: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtEmail" no puedan
+           escribirse caracteres especiales o números.
+        */
+        private void txtEmail_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtEmail", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtEmail.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 96 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 96 || Letter > 122)
+                    txtEmail.Text = ""; // Se vacía el textbox.
+        }
+
+        // <--- Evento #6: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtUsername" no puedan
+           escribirse caracteres especiales o espacios en blanco.
+        */
+        private void txtUsername_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtUsername", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtUsername.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no cumplen con los siguientes rangos de valores [48 - 57, 64, mayor a 165] en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter > 165) txtUsername.Text = ""; // Se vacía el textbox.
         }
 
         // <---------------------------------------> //

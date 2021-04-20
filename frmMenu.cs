@@ -98,7 +98,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #6: "Leave". ---> //
+        // <--- Evento #8: "Leave". ---> //
         /*
            Este evento sólo se "activará" cuando el cursor del Mouse se encuentre fuera de
            la caja de texto.
@@ -110,7 +110,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #13: "CellClick". ---> //
+        // <--- Evento #9: "CellClick". ---> //
         /*
            Este evento servirá para programar lo que sucederá con la información de la celda seleccionada
            del "DataGridview". En este caso, al momento de seleccionar algún dato de una fila correspondiente,
@@ -122,6 +122,23 @@ namespace ProyectoFinal
             ComboBType.SelectedItem = dataGridActivities.CurrentRow.Cells[3].Value.ToString();
             txtStart.Text = dataGridActivities.CurrentRow.Cells[4].Value.ToString();
             txtEnd.Text = dataGridActivities.CurrentRow.Cells[5].Value.ToString();
+        }
+
+        // <--- Evento #10: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtName" no puedan
+           escribirse caracteres especiales o números.
+        */
+        private void txtName_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtName", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtName.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
+                    txtName.Text = ""; // Se vacía el textbox.
         }
 
         // <---------------------------------------> //

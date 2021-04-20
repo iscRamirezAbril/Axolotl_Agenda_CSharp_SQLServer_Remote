@@ -177,6 +177,72 @@ namespace ProyectoFinal
             }
         }
 
+        // <--- Evento #13: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtSignName" no puedan
+           escribirse caracteres especiales o números.
+        */
+        private void txtSignName_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtSignName", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtSignName.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
+                    txtSignName.Text = ""; // Se vacía el textbox.
+        }
+
+        // <--- Evento #14: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtSignLastName" no puedan
+           escribirse caracteres especiales o números.
+        */
+        private void txtSignLastName_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtSignLastName", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtSignLastName.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
+                    txtSignLastName.Text = ""; // Se vacía el textbox.
+        }
+
+        // <--- Evento #15: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtSignUsername" no puedan
+           escribirse caracteres especiales o espacios en blanco.
+        */
+        private void txtSignUsername_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtSignUsername", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtSignUsername.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no cumplen con los siguientes rangos de valores [64, 48 - 57, mayor a 165] en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter > 165) txtSignUsername.Text = ""; // Se vacía el textbox.
+        }
+
+        // <--- Evento #16: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtEmail" no puedan
+           escribirse caracteres especiales diferentes a "@" y espacios en blanco.
+        */
+        private void txtSignEmail_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtSignEmail", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtSignEmail.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 97 || Letter > 122)
+                    txtSignEmail.Text = ""; // Se vacía el textbox.
+        }
+
         // <---------------------------------------> //
         // <---------- BOTONES / BUTTONS ----------> //
         // <---------------------------------------> //

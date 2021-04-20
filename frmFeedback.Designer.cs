@@ -159,6 +159,7 @@ namespace ProyectoFinal
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(239, 20);
             this.txtEmail.TabIndex = 8;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label3
             // 

@@ -132,6 +132,7 @@ namespace ProyectoFinal
             this.txtUser.Size = new System.Drawing.Size(238, 20);
             this.txtUser.TabIndex = 1;
             this.txtUser.Text = "USERNAME";
+            this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
             this.txtUser.Enter += new System.EventHandler(this.txtUser_Enter);
             this.txtUser.Leave += new System.EventHandler(this.txtUser_Leave);
             this.txtUser.Validated += new System.EventHandler(this.txtUser_Validated);

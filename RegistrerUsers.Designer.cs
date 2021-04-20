@@ -103,6 +103,7 @@ namespace ProyectoFinal
             this.txtSignName.Size = new System.Drawing.Size(238, 20);
             this.txtSignName.TabIndex = 8;
             this.txtSignName.Text = "NAME";
+            this.txtSignName.TextChanged += new System.EventHandler(this.txtSignName_TextChanged);
             this.txtSignName.Enter += new System.EventHandler(this.txtSignName_Enter);
             this.txtSignName.Leave += new System.EventHandler(this.txtSignName_Leave);
             // 
@@ -128,6 +129,7 @@ namespace ProyectoFinal
             this.txtSignLastName.Size = new System.Drawing.Size(238, 20);
             this.txtSignLastName.TabIndex = 10;
             this.txtSignLastName.Text = "LAST NAME";
+            this.txtSignLastName.TextChanged += new System.EventHandler(this.txtSignLastName_TextChanged);
             this.txtSignLastName.Enter += new System.EventHandler(this.txtSignLastName_Enter);
             this.txtSignLastName.Leave += new System.EventHandler(this.txtSignLastName_Leave);
             // 
@@ -153,6 +155,7 @@ namespace ProyectoFinal
             this.txtSignUsername.Size = new System.Drawing.Size(238, 20);
             this.txtSignUsername.TabIndex = 12;
             this.txtSignUsername.Text = "USERNAME";
+            this.txtSignUsername.TextChanged += new System.EventHandler(this.txtSignUsername_TextChanged);
             this.txtSignUsername.Enter += new System.EventHandler(this.txtSignUsername_Enter);
             this.txtSignUsername.Leave += new System.EventHandler(this.txtSignUsername_Leave);
             // 
@@ -178,6 +181,7 @@ namespace ProyectoFinal
             this.txtSignEmail.Size = new System.Drawing.Size(238, 20);
             this.txtSignEmail.TabIndex = 14;
             this.txtSignEmail.Text = "EMAIL ADDRESS";
+            this.txtSignEmail.TextChanged += new System.EventHandler(this.txtSignEmail_TextChanged);
             this.txtSignEmail.Enter += new System.EventHandler(this.txtSignEmail_Enter);
             this.txtSignEmail.Leave += new System.EventHandler(this.txtSignEmail_Leave);
             // 

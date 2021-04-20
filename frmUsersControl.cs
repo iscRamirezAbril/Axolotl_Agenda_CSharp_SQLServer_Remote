@@ -299,7 +299,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #10: "Leave". ---> //
+        // <--- Evento #12: "Leave". ---> //
         /*
            Este evento sólo se "activará" cuando el cursor del Mouse se encuentre fuera de
            la caja de texto.
@@ -311,7 +311,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #11: "Enter". ---> //
+        // <--- Evento #13: "Enter". ---> //
         /*
             Este evento sólo se "activará" si el cursor del Mouse se encuentra dentro de la 
             caja de texto.
@@ -323,7 +323,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #12: "Leave". ---> //
+        // <--- Evento #14: "Leave". ---> //
         /*
            Este evento sólo se "activará" cuando el cursor del Mouse se encuentre fuera de
            la caja de texto.
@@ -335,7 +335,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #13: "Enter". ---> //
+        // <--- Evento #15: "Enter". ---> //
         /*
             Este evento sólo se "activará" si el cursor del Mouse se encuentra dentro de la 
             caja de texto.
@@ -347,7 +347,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #12: "Leave". ---> //
+        // <--- Evento #16: "Leave". ---> //
         /*
            Este evento sólo se "activará" cuando el cursor del Mouse se encuentre fuera de
            la caja de texto.
@@ -359,7 +359,7 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #13: "CellClick". ---> //
+        // <--- Evento #17: "CellClick". ---> //
         /*
            Este evento servirá para programar lo que sucederá con la información de la celda seleccionada
            del "DataGridview". En este caso, al momento de seleccionar algún dato de una fila correspondiente,
@@ -377,6 +377,87 @@ namespace ProyectoFinal
             txtEmail.Text = dataGridUsers.CurrentRow.Cells[5].Value.ToString();
             // Debido a que la contraseña está encriptada en la base de datos, se manda la contraseña desesncriptada al textbox.
             txtPass.Text = objCtrl.Desencrypt(dataGridUsers.CurrentRow.Cells[6].Value.ToString());
+        }
+
+        // <--- Evento #18: "TextChanged". ---> //
+        /*
+            Este evento se programó para que en el texbox de nombre "txtUsername" no puedan
+            escribirse caracteres especiales o letras.
+        */
+        private void txtUsername_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtUsername", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtUsername.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no cumplen con los siguientes rangos de valores [48 - 57, 64, mayor a 165] en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter > 165) txtUsername.Text = ""; // Se vacía el textbox.
+        }
+
+        // <--- Evento #19: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtEmail" no puedan
+           escribirse caracteres especiales diferentes a "@" y espacios en blanco.
+        */
+        private void txtEmail_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtEmail", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtEmail.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 97 || Letter > 122)
+                    txtEmail.Text = ""; // Se vacía el textbox.
+        }
+
+        // <--- Evento #20: "TextChanged". ---> //
+        /*
+            Este evento se programó para que en el texbox de nombre "txtIdRol" no puedan
+            escribirse caracteres especiales o letras.
+        */
+        private void txtIdRol_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtIdRol", se obtendrá un byte en "Código ASCII".
+            foreach (int Number in Encoding.ASCII.GetBytes(txtIdRol.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [48 - 57] en "Código ASCII".
+                */
+                if (Number < 48 || Number > 57) txtIdRol.Text = "";           
+        }
+
+        // <--- Evento #21: "TextChanged". ---> //
+        /*
+            Este evento se programó para que en el texbox de nombre "txtName" no puedan
+            escribirse caracteres especiales o números.
+        */
+        private void txtName_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtName", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtName.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
+                    txtName.Text = ""; // Se vacía el textbox.
+        }
+
+        // <--- Evento #22: "TextChanged". ---> //
+        /*
+            Este evento se programó para que en el texbox de nombre "txtLastName" no puedan
+            escribirse caracteres especiales o números.
+        */
+        private void txtLastName_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtLastName", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtLastName.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
+                    txtLastName.Text = ""; // Se vacía el textbox.
         }
     }
 }

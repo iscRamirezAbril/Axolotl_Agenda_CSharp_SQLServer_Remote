@@ -75,12 +75,15 @@ namespace ProyectoFinal
            escribirse caracteres especiales o números.
         */
         private void txtName_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtName", se obtendrá un byte en "Código ASCII".
             foreach (char Letter in Encoding.ASCII.GetBytes(txtName.Text))
-                if (Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122){
-                    // Mensaje de error que se desplegará al momento de detectar el error.
-                    MessageBox.Show("You can only enter letters...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
                     txtName.Text = ""; // Se vacía el textbox.
-                }
         }
 
         // <--- Evento #2: "TextChanged". ---> //
@@ -89,12 +92,32 @@ namespace ProyectoFinal
            escribirse caracteres especiales o números.
         */
         private void txtLastName_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtLastName", se obtendrá un byte en "Código ASCII".
             foreach (char Letter in Encoding.ASCII.GetBytes(txtLastName.Text))
-                if (Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122){
-                    // Mensaje de error que se desplegará al momento de detectar el error.
-                    MessageBox.Show("You can only enter letters...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
                     txtLastName.Text = ""; // Se vacía el textbox.
-                }
+        }
+
+        // <--- Evento #3: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtEmail" no puedan
+           escribirse caracteres especiales o números.
+        */
+        private void txtEmail_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtEmail", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtEmail.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 96 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 96 || Letter > 122)
+                    txtEmail.Text = ""; // Se vacía el textbox.
         }
 
         // <---------------------------------------> //

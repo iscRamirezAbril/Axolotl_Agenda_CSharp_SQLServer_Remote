@@ -39,15 +39,6 @@ namespace ProyectoFinal
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.lblAdmins = new System.Windows.Forms.Label();
             this.dataGridUsers = new System.Windows.Forms.DataGridView();
-            this.usridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usrRolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usrNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usrLnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usrUsernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usrEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usrPassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usrConPassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.iconbtnSearch = new FontAwesome.Sharp.IconButton();
@@ -71,10 +62,19 @@ namespace ProyectoFinal
             this.label8 = new System.Windows.Forms.Label();
             this.iconbtnDelete = new FontAwesome.Sharp.IconButton();
             this.btnModify = new System.Windows.Forms.Button();
+            this.usridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usrRolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usrNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usrLnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usrUsernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usrEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usrPassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usrConPassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.groupBUsersData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsersControl
@@ -183,62 +183,6 @@ namespace ProyectoFinal
             this.dataGridUsers.Size = new System.Drawing.Size(591, 126);
             this.dataGridUsers.TabIndex = 5;
             this.dataGridUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridUsers_CellClick);
-            // 
-            // usridDataGridViewTextBoxColumn
-            // 
-            this.usridDataGridViewTextBoxColumn.DataPropertyName = "Usrid";
-            this.usridDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.usridDataGridViewTextBoxColumn.HeaderText = "id";
-            this.usridDataGridViewTextBoxColumn.Name = "usridDataGridViewTextBoxColumn";
-            // 
-            // usrRolDataGridViewTextBoxColumn
-            // 
-            this.usrRolDataGridViewTextBoxColumn.DataPropertyName = "UsrRol";
-            this.usrRolDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.usrRolDataGridViewTextBoxColumn.HeaderText = "Rol";
-            this.usrRolDataGridViewTextBoxColumn.Name = "usrRolDataGridViewTextBoxColumn";
-            // 
-            // usrNameDataGridViewTextBoxColumn
-            // 
-            this.usrNameDataGridViewTextBoxColumn.DataPropertyName = "UsrName";
-            this.usrNameDataGridViewTextBoxColumn.FillWeight = 70F;
-            this.usrNameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.usrNameDataGridViewTextBoxColumn.Name = "usrNameDataGridViewTextBoxColumn";
-            // 
-            // usrLnameDataGridViewTextBoxColumn
-            // 
-            this.usrLnameDataGridViewTextBoxColumn.DataPropertyName = "UsrLname";
-            this.usrLnameDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.usrLnameDataGridViewTextBoxColumn.Name = "usrLnameDataGridViewTextBoxColumn";
-            // 
-            // usrUsernameDataGridViewTextBoxColumn
-            // 
-            this.usrUsernameDataGridViewTextBoxColumn.DataPropertyName = "UsrUsername";
-            this.usrUsernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usrUsernameDataGridViewTextBoxColumn.Name = "usrUsernameDataGridViewTextBoxColumn";
-            // 
-            // usrEmailDataGridViewTextBoxColumn
-            // 
-            this.usrEmailDataGridViewTextBoxColumn.DataPropertyName = "UsrEmail";
-            this.usrEmailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.usrEmailDataGridViewTextBoxColumn.Name = "usrEmailDataGridViewTextBoxColumn";
-            // 
-            // usrPassDataGridViewTextBoxColumn
-            // 
-            this.usrPassDataGridViewTextBoxColumn.DataPropertyName = "UsrPass";
-            this.usrPassDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.usrPassDataGridViewTextBoxColumn.Name = "usrPassDataGridViewTextBoxColumn";
-            // 
-            // usrConPassDataGridViewTextBoxColumn
-            // 
-            this.usrConPassDataGridViewTextBoxColumn.DataPropertyName = "UsrConPass";
-            this.usrConPassDataGridViewTextBoxColumn.HeaderText = "UsrConPass";
-            this.usrConPassDataGridViewTextBoxColumn.Name = "usrConPassDataGridViewTextBoxColumn";
-            this.usrConPassDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataSource = typeof(ProyectoFinal.Users);
             // 
             // txtSearch
             // 
@@ -383,6 +327,7 @@ namespace ProyectoFinal
             this.txtIdRol.Size = new System.Drawing.Size(104, 20);
             this.txtIdRol.TabIndex = 16;
             this.txtIdRol.Text = "ID_ROL";
+            this.txtIdRol.TextChanged += new System.EventHandler(this.txtIdRol_TextChanged);
             this.txtIdRol.Enter += new System.EventHandler(this.txtIdTipo_Enter);
             this.txtIdRol.Leave += new System.EventHandler(this.txtIdTipo_Leave);
             // 
@@ -415,6 +360,7 @@ namespace ProyectoFinal
             this.txtEmail.Size = new System.Drawing.Size(220, 20);
             this.txtEmail.TabIndex = 14;
             this.txtEmail.Text = "EMAIL";
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
@@ -431,6 +377,7 @@ namespace ProyectoFinal
             this.txtUsername.Size = new System.Drawing.Size(159, 20);
             this.txtUsername.TabIndex = 13;
             this.txtUsername.Text = "USERNAME";
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
@@ -447,6 +394,7 @@ namespace ProyectoFinal
             this.txtLastName.Size = new System.Drawing.Size(213, 20);
             this.txtLastName.TabIndex = 12;
             this.txtLastName.Text = "LAST NAME";
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             this.txtLastName.Enter += new System.EventHandler(this.txtLastName_Enter);
             this.txtLastName.Leave += new System.EventHandler(this.txtLastName_Leave);
             // 
@@ -463,6 +411,7 @@ namespace ProyectoFinal
             this.txtName.Size = new System.Drawing.Size(208, 20);
             this.txtName.TabIndex = 11;
             this.txtName.Text = "NAME";
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             this.txtName.Enter += new System.EventHandler(this.txtName_Enter);
             this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
@@ -596,6 +545,62 @@ namespace ProyectoFinal
             this.btnModify.UseVisualStyleBackColor = false;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
+            // usridDataGridViewTextBoxColumn
+            // 
+            this.usridDataGridViewTextBoxColumn.DataPropertyName = "Usrid";
+            this.usridDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.usridDataGridViewTextBoxColumn.HeaderText = "id";
+            this.usridDataGridViewTextBoxColumn.Name = "usridDataGridViewTextBoxColumn";
+            // 
+            // usrRolDataGridViewTextBoxColumn
+            // 
+            this.usrRolDataGridViewTextBoxColumn.DataPropertyName = "UsrRol";
+            this.usrRolDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.usrRolDataGridViewTextBoxColumn.HeaderText = "Rol";
+            this.usrRolDataGridViewTextBoxColumn.Name = "usrRolDataGridViewTextBoxColumn";
+            // 
+            // usrNameDataGridViewTextBoxColumn
+            // 
+            this.usrNameDataGridViewTextBoxColumn.DataPropertyName = "UsrName";
+            this.usrNameDataGridViewTextBoxColumn.FillWeight = 70F;
+            this.usrNameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.usrNameDataGridViewTextBoxColumn.Name = "usrNameDataGridViewTextBoxColumn";
+            // 
+            // usrLnameDataGridViewTextBoxColumn
+            // 
+            this.usrLnameDataGridViewTextBoxColumn.DataPropertyName = "UsrLname";
+            this.usrLnameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.usrLnameDataGridViewTextBoxColumn.Name = "usrLnameDataGridViewTextBoxColumn";
+            // 
+            // usrUsernameDataGridViewTextBoxColumn
+            // 
+            this.usrUsernameDataGridViewTextBoxColumn.DataPropertyName = "UsrUsername";
+            this.usrUsernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usrUsernameDataGridViewTextBoxColumn.Name = "usrUsernameDataGridViewTextBoxColumn";
+            // 
+            // usrEmailDataGridViewTextBoxColumn
+            // 
+            this.usrEmailDataGridViewTextBoxColumn.DataPropertyName = "UsrEmail";
+            this.usrEmailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.usrEmailDataGridViewTextBoxColumn.Name = "usrEmailDataGridViewTextBoxColumn";
+            // 
+            // usrPassDataGridViewTextBoxColumn
+            // 
+            this.usrPassDataGridViewTextBoxColumn.DataPropertyName = "UsrPass";
+            this.usrPassDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.usrPassDataGridViewTextBoxColumn.Name = "usrPassDataGridViewTextBoxColumn";
+            // 
+            // usrConPassDataGridViewTextBoxColumn
+            // 
+            this.usrConPassDataGridViewTextBoxColumn.DataPropertyName = "UsrConPass";
+            this.usrConPassDataGridViewTextBoxColumn.HeaderText = "UsrConPass";
+            this.usrConPassDataGridViewTextBoxColumn.Name = "usrConPassDataGridViewTextBoxColumn";
+            this.usrConPassDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataSource = typeof(ProyectoFinal.Users);
+            // 
             // frmUsersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,9 +622,9 @@ namespace ProyectoFinal
             this.Text = "Users Control";
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.groupBUsersData.ResumeLayout(false);
             this.groupBUsersData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -80,13 +80,34 @@ namespace ProyectoFinal
           Evento que se activa cuando se da "click" en el label que abrirá el panel de edición.
         */
         private void linkLabelEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e){
-            loadUserData();  // Llamada al método que permite visualizar los datos del usuario.
             panelEditUserData.Visible = true; // El panel donde se encuentra la información de usuario editable se mostrará.
+            loadUserData();  // Llamada al método que permite visualizar los datos del usuario.
         }
 
         // <--- Evento #2: "TextChanged". ---> //
+        /*
+           Evento que permite a los usuarios no poder visualizar su contraseña mientras la escribe en
+           el textbox.
+        */
         private void txtCurrentPass_TextChanged(object sender, EventArgs e){
             txtCurrentPass.UseSystemPasswordChar = true; // Esta condición permite que la contraseña no se visualice.
+        }
+
+        // <--- Evento #3: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtEditEmail" no puedan
+           escribirse caracteres especiales diferentes a "@" y espacios en blanco.
+        */
+        private void txtEditEmail_TextChanged(object sender, EventArgs e){
+            // Por cada Valor insertado en "txtEmail", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtEditEmail.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 97 - 122] 
+                   en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 97 || Letter > 122)
+                    txtEditEmail.Text = ""; // Se vacía el textbox.
         }
 
         // <---------------------------------------> //

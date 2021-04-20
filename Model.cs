@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ProyectoFinal
 {
     /*
-       Esta clase nos ayudará a realizar todas las insersiones a "MySql Server".
+       Esta clase nos ayudará a realizar todas las insersiones a "SQL Server".
        En otras palabras, esta clase nos va a permitir guardar todos los métodos para las validaciones.
     */
     class Model{
@@ -21,9 +21,11 @@ namespace ProyectoFinal
 
         // <--- Método #1: Validación de datos y registro de usuarios ---> //
         public int register(Users user){ // Recibe como parámetro una variable del tipo "Users".
-                                     // Referencia a la clase de nombre "SQLConnection".
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
-
             connection.Open(); // Esta función permite abrir la conexión.
 
             // Inserción a "SQL Server".
@@ -63,6 +65,10 @@ namespace ProyectoFinal
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
 
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open(); // Esta función permite abrir la conexión.
 
@@ -101,6 +107,10 @@ namespace ProyectoFinal
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
 
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open(); // Esta función permite abrir la conexión.
 
@@ -144,6 +154,10 @@ namespace ProyectoFinal
             // Este objeto permite leer todos los datos que se encuentren en la base de datos.
             SqlDataReader reader;
 
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open(); // Esta función permite abrir la conexión.
 
@@ -186,7 +200,10 @@ namespace ProyectoFinal
             */
             string sql = "UPDATE Users SET usrName='" + Usrname + "', usrLname='" + UsrLname + "', usrUsername='" + UsrUsername + "', usrEmail='" + UsrEmail + "', usrPass='" + UsrPass + "', usrRol='" + UsridRol + "' WHERE usrId='" + Usrid + "'";
 
-            // Referencia a la clase de nombre "SQLConnection".
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
@@ -208,7 +225,10 @@ namespace ProyectoFinal
             */
             string sql = "UPDATE Users SET usrName='" + Usrname + "', usrLname='" + UsrLname + "', usrUsername='" + UsrUsername + "', usrEmail='" + UsrEmail + "' WHERE usrId='" + Session.id + "'";
 
-            // Referencia a la clase de nombre "SQLConnection".
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+           */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
@@ -229,7 +249,10 @@ namespace ProyectoFinal
             */
             string sql = "DELETE Users WHERE usrId='" + Usrid + "'";
 
-            // Referencia a la clase de nombre "SQLConnection".
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
@@ -250,7 +273,10 @@ namespace ProyectoFinal
             */
             string sql = "DELETE FROM Activities WHERE actName= '" + ActName + "'";
 
-            // Referencia a la clase de nombre "SQLConnection".
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
@@ -263,7 +289,10 @@ namespace ProyectoFinal
 
         // <--- Método #6: Validación de datos y registro de actividades. ---> //
         public int newAct(Activities activity){ // Recibe como parámetro una variable de tipo "Activities".
-                                       // Referencia a la clase de nombre "SQLConnection".
+            /*
+               Creación de una instancia de la clase "SqlConnection", la cual llamará al método que realiza
+               la conexión a "SQL Server".
+            */
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open(); // Esta función permite abrir la conexión.
 

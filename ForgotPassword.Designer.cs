@@ -131,8 +131,8 @@ namespace ProyectoFinal
             this.lblInstructions.Size = new System.Drawing.Size(415, 80);
             this.lblInstructions.TabIndex = 2;
             this.lblInstructions.Text = "Don´t worry!\r\nTo recover your password, just write your E-mail adress\r\nand userna" +
-    "me to send you information about \r\nyour password. Don\'t forget your username.\r\nE" +
-    "verything it\'s gonna be alright =)";
+    "me to send you information about \r\nyour password.\r\nEverything it\'s gonna be alri" +
+    "ght =)";
             this.lblInstructions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtEmail
@@ -146,6 +146,7 @@ namespace ProyectoFinal
             this.txtEmail.Size = new System.Drawing.Size(238, 20);
             this.txtEmail.TabIndex = 3;
             this.txtEmail.Text = "EMAIL";
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
@@ -183,6 +184,7 @@ namespace ProyectoFinal
             this.txtUsername.Size = new System.Drawing.Size(238, 20);
             this.txtUsername.TabIndex = 7;
             this.txtUsername.Text = "USERNAME";
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 

@@ -270,6 +270,7 @@ namespace ProyectoFinal
             this.txtEditEmail.Name = "txtEditEmail";
             this.txtEditEmail.Size = new System.Drawing.Size(220, 20);
             this.txtEditEmail.TabIndex = 21;
+            this.txtEditEmail.TextChanged += new System.EventHandler(this.txtEditEmail_TextChanged);
             // 
             // lblEditEmail
             // 
