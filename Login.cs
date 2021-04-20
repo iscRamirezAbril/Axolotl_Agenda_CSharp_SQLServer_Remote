@@ -184,14 +184,14 @@ namespace ProyectoFinal
                    Declaración de una variable de tipo "string" que almacenará la respuesta generada por el método
                    "ctrlLogin()".
                 */
-                string respuesta = ctrl.crtlLogin(usrUsername, usrPass);
+                string answer = ctrl.crtlLogin(usrUsername, usrPass);
                 /*
                    Condición que sólo es válida sí y sólo sí la respuesta tiene algún mensaje. Significa que, el
                    usuario cometió algún error al ingresar sus datos.
                 */
-                if (respuesta.Length > 0){ 
+                if (answer.Length > 0){ 
                     // MessageBox a mostrar.
-                    MessageBox.Show(respuesta, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(answer, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 /*
                    Condición que sólo es válida sí y sólo sí el usuario ingresa sus datos correctamente.

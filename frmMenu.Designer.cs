@@ -51,16 +51,16 @@ namespace ProyectoFinal
             this.label3 = new System.Windows.Forms.Label();
             this.btnDates = new System.Windows.Forms.Button();
             this.dataGridActivities = new System.Windows.Forms.DataGridView();
+            this.activitiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.actIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actUseridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actStarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actStartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actEndDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activitiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBAct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActivities)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.activitiesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activitiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTableTitle
@@ -291,9 +291,9 @@ namespace ProyectoFinal
             this.actUseridDataGridViewTextBoxColumn,
             this.actNameDataGridViewTextBoxColumn,
             this.actTypeDataGridViewTextBoxColumn,
-            this.actStarDataGridViewTextBoxColumn,
+            this.actStartDataGridViewTextBoxColumn,
             this.actEndDataGridViewTextBoxColumn});
-            this.dataGridActivities.DataSource = this.activitiesBindingSource1;
+            this.dataGridActivities.DataSource = this.activitiesBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -326,6 +326,10 @@ namespace ProyectoFinal
             this.dataGridActivities.TabIndex = 11;
             this.dataGridActivities.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridActivities_CellClick);
             // 
+            // activitiesBindingSource
+            // 
+            this.activitiesBindingSource.DataSource = typeof(ProyectoFinal.Activities);
+            // 
             // actIdDataGridViewTextBoxColumn
             // 
             this.actIdDataGridViewTextBoxColumn.DataPropertyName = "ActId";
@@ -352,21 +356,17 @@ namespace ProyectoFinal
             this.actTypeDataGridViewTextBoxColumn.HeaderText = "Type";
             this.actTypeDataGridViewTextBoxColumn.Name = "actTypeDataGridViewTextBoxColumn";
             // 
-            // actStarDataGridViewTextBoxColumn
+            // actStartDataGridViewTextBoxColumn
             // 
-            this.actStarDataGridViewTextBoxColumn.DataPropertyName = "ActStart";
-            this.actStarDataGridViewTextBoxColumn.HeaderText = "Start";
-            this.actStarDataGridViewTextBoxColumn.Name = "actStarDataGridViewTextBoxColumn";
+            this.actStartDataGridViewTextBoxColumn.DataPropertyName = "ActStart";
+            this.actStartDataGridViewTextBoxColumn.HeaderText = "Start";
+            this.actStartDataGridViewTextBoxColumn.Name = "actStartDataGridViewTextBoxColumn";
             // 
             // actEndDataGridViewTextBoxColumn
             // 
             this.actEndDataGridViewTextBoxColumn.DataPropertyName = "ActEnd";
             this.actEndDataGridViewTextBoxColumn.HeaderText = "End";
             this.actEndDataGridViewTextBoxColumn.Name = "actEndDataGridViewTextBoxColumn";
-            // 
-            // activitiesBindingSource1
-            // 
-            this.activitiesBindingSource1.DataSource = typeof(ProyectoFinal.Activities);
             // 
             // frmMenu
             // 
@@ -397,7 +397,7 @@ namespace ProyectoFinal
             this.Load += new System.EventHandler(this.frmMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBAct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActivities)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.activitiesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activitiesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,14 +421,13 @@ namespace ProyectoFinal
         private System.Windows.Forms.TextBox txtEnd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDates;
-        private System.Windows.Forms.DataGridViewTextBoxColumn star1DataGridViewTextBoxColumn;
         internal System.Windows.Forms.DataGridView dataGridActivities;
+        private System.Windows.Forms.BindingSource activitiesBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn actIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn actUseridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn actNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn actTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actStarDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actStartDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn actEndDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource activitiesBindingSource1;
     }
 }

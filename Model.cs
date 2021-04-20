@@ -22,9 +22,9 @@ namespace ProyectoFinal
         // <--- Método #1: Validación de datos y registro de usuarios ---> //
         public int register(Users user){ // Recibe como parámetro una variable del tipo "Users".
                                      // Referencia a la clase de nombre "SQLConnection".
-            SqlConnection conexion = SQLConnection.getConnection();
+            SqlConnection connection = SQLConnection.getConnection();
 
-            conexion.Open(); // Esta función permite abrir la conexión.
+            connection.Open(); // Esta función permite abrir la conexión.
 
             // Inserción a "SQL Server".
             /*
@@ -35,7 +35,7 @@ namespace ProyectoFinal
             string sql = "INSERT INTO Users (usrName, usrLname, usrUsername, usrEmail, usrPass, usrRol) VALUES (@usrName, @usrLname, @usrUsername, @usrEmail, @usrPass, @usrRol)";
 
             // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
-            SqlCommand command = new SqlCommand(sql, conexion);
+            SqlCommand command = new SqlCommand(sql, connection);
 
             /*
                Se crean "comandos" que realizan la acción de enviar los datos que el ususario registre

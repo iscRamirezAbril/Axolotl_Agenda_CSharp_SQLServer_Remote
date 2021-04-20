@@ -77,36 +77,38 @@ namespace ProyectoFinal
             /*
                ".IsNullOrEmpty() verifica que el campo esté vacío o sea "nulo". de ser así, la condición se cumple.
             */
-            if (string.IsNullOrEmpty(userAdmin.UsrName) || string.IsNullOrEmpty(userAdmin.UsrLname) ||
-                string.IsNullOrEmpty(userAdmin.UsrUsername) || string.IsNullOrEmpty(userAdmin.UsrPass)
-                || string.IsNullOrEmpty(userAdmin.UsrEmail))
+            if (string.IsNullOrEmpty(userAdmin.UsrName) || string.IsNullOrEmpty(userAdmin.UsrLname) || string.IsNullOrEmpty(userAdmin.UsrUsername) || string.IsNullOrEmpty(userAdmin.UsrPass) || string.IsNullOrEmpty(userAdmin.UsrEmail))
                 errorMessage = "All fields are required."; // Mensaje de error.
 
-            // <--- Validación #2: Revisión de usuario existente. ---> //
-            else{
-                // Mensaje de error que se mostrará sólo si el nombre de usuario insertado ya existe.
-                if (model.existUser(userAdmin.UsrUsername)) errorMessage = "The username already exists. \nPlease choose another one...";
+            // <--- Validación #2: Datos no iguales a los predeterminados.
+            // Condición que se activará sí y sólo sí alguno de los valores que el administrador intente registrar son los predeterminados de los textboxes.
+            else if(userAdmin.UsrName == "NAME" || userAdmin.UsrLname == "LAST NAME" || userAdmin.UsrUsername == "USERNAME" || userAdmin.UsrPass == "PASSWORD" || userAdmin.UsrEmail == "EMAILL")
+                    errorMessage = "All fields are required."; // Mensaje de error.
+                // <--- Validación #3: Revisión de usuario existente. ---> //
                 else{
-                    /*
-                        La contraseña insertada por el usuario se encriptará (para eso se llama al método
-                        de nombre "Encypt") y lo asignará a la variable "Password1" del objeto "userAdmin".
-                    */
-                    userAdmin.UsrPass = Encrypt(userAdmin.UsrPass);
-                    /*
-                        Los usuarios que se registren serán solamente "Administradores", ya que:
-                           id 1 = "Administrador".
-                           id 2 = "Usuario".
-                    */
-                    userAdmin.UsrRol = 1;
+                    // Mensaje de error que se mostrará sólo si el nombre de usuario insertado ya existe.
+                    if (model.existUser(userAdmin.UsrUsername)) errorMessage = "The username already exists. \nPlease choose another one...";
+                    else{
+                        /*
+                            La contraseña insertada por el usuario se encriptará (para eso se llama al método
+                            de nombre "Encypt") y lo asignará a la variable "Password1" del objeto "userAdmin".
+                        */
+                        userAdmin.UsrPass = Encrypt(userAdmin.UsrPass);
+                        /*
+                            Los usuarios que se registren serán solamente "Administradores", ya que:
+                               id 1 = "Administrador".
+                               id 2 = "Usuario".
+                        */
+                        userAdmin.UsrRol = 1;
 
-                    /*
-                        Se llama al método "registro" de la clase "model" que se le enviará el objeto "userAdmin",
-                        ya que, ese objeto contiene todos los datos registrados por el usuario.
-                    */
-                    model.register(userAdmin);
+                        /*
+                            Se llama al método "registro" de la clase "model" que se le enviará el objeto "userAdmin",
+                            ya que, ese objeto contiene todos los datos registrados por el usuario.
+                        */
+                        model.register(userAdmin);
+                    }
                 }
-            }
-            return errorMessage; // Retorno del mensaje de error.
+                return errorMessage; // Retorno del mensaje de error.
         }
 
         // <--- Método #3: Modificación de datos de usuario (Sólo administradores) ---> //
@@ -121,15 +123,16 @@ namespace ProyectoFinal
             /*
                ".IsNullOrEmpty() verifica que el campo esté vacío o sea "nulo". de ser así, la condición se cumple.
             */
-            if (string.IsNullOrEmpty(usrName) || string.IsNullOrEmpty(usrLname) ||
-                string.IsNullOrEmpty(usrUsername) || string.IsNullOrEmpty(usrEmail)
-                || string.IsNullOrEmpty(usrPass) || Convert.ToString(usridRol) == "")
+            if (string.IsNullOrEmpty(usrName) || string.IsNullOrEmpty(usrLname) || string.IsNullOrEmpty(usrUsername) || string.IsNullOrEmpty(usrEmail) || string.IsNullOrEmpty(usrPass) || Convert.ToString(usridRol) == "")
                 errorMessage = "All fields are required."; // Mensaje de error.
 
-            else{
+            // <--- Validación #2: Datos no iguales a los predeterminados.
+            // Condición que se activará sí y sólo sí alguno de los valores que el administrador intente modificar son los predeterminados de los textboxes.
+            else if (usrName == "NAME" || usrLname == "LAST NAME" || usrUsername == "USERNAME" || usrEmail == "EMAIL" || usrPass == "PASSWORD" || Convert.ToString(usridRol) == "ID_ROL")
+                errorMessage = "All fields are required."; // Mensaje de error.
+            else
                 // Llamada al método "ModifyUsers()".
                 model.ModifyUsers(usrName, usrLname, usrUsername, usrEmail, usrPass, usridRol, usrId);
-            }
 
             return errorMessage; // Retorno del mensaje de error.
         }

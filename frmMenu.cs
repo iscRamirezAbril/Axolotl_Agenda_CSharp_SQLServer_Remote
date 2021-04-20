@@ -118,10 +118,10 @@ namespace ProyectoFinal
         */
         private void dataGridActivities_CellClick(object sender, DataGridViewCellEventArgs e){
             // Los valores que correspondan a cierta celda de la fila del DataGridView se asginarán a los textbox y ComboBoxes.
-            txtName.Text = dataGridActivities.CurrentRow.Cells[2].Value.ToString();
-            ComboBType.SelectedItem = dataGridActivities.CurrentRow.Cells[3].Value.ToString();
-            txtStart.Text = dataGridActivities.CurrentRow.Cells[4].Value.ToString();
-            txtEnd.Text = dataGridActivities.CurrentRow.Cells[5].Value.ToString();
+            txtName.Text = dataGridActivities.CurrentRow.Cells[0].Value.ToString();
+            ComboBType.SelectedItem = dataGridActivities.CurrentRow.Cells[1].Value.ToString();
+            txtStart.Text = dataGridActivities.CurrentRow.Cells[2].Value.ToString();
+            txtEnd.Text = dataGridActivities.CurrentRow.Cells[3].Value.ToString();
         }
 
         // <---------------------------------------> //
@@ -141,25 +141,19 @@ namespace ProyectoFinal
             activity.ActType = ComboBType.SelectedItem.ToString();
             activity.ActStart = Convert.ToDateTime(txtStart.Text);
             activity.ActEnd = Convert.ToDateTime(txtEnd.Text);
+     
+            Control control = new Control(); // Creación de un objeto de la clase "Control".
+            string errorMessage = control.ctrlActLog(activity); // Llamada al método "ctrlActLog", enviandole como parámetro el objeto "actividad".
 
-            try{
-                Control control = new Control(); // Creación de un objeto de la clase "Control".
-                string errorMessage = control.ctrlActLog(activity); // Llamada al método "ctrlActLog", enviandole como parámetro el objeto "actividad".
-
-                if (errorMessage.Length > 0){
-                    // "MessageBox" que se mostrará al usuario para avisar de algun error.
-                    MessageBox.Show(errorMessage, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else{
-                    // "MessageBox" que se mostrará al usuario para confirmar su registro.
-                    MessageBox.Show("Activity successfully registered!", "Registered data.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clean(); // Llamada al método para limpiar los textbox.
-                    ReloadActTable(null); // Llamada al método que permite actualizar la tabla.
-                }
+            if (errorMessage.Length > 0){
+                // "MessageBox" que se mostrará al usuario para avisar de algun error.
+                MessageBox.Show(errorMessage, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            // Catch que sólo se activará si el administrador presenta algún tipo de error al registrar un usuario.
-            catch (Exception ex){
-                MessageBox.Show(ex.Message); // Mensaje de error.
+            else{
+                // "MessageBox" que se mostrará al usuario para confirmar su registro.
+                MessageBox.Show("Activity successfully registered!", "Registered data.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Clean(); // Llamada al método para limpiar los textbox.
+                ReloadActTable(null); // Llamada al método que permite actualizar la tabla.
             }
         }
 

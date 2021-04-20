@@ -48,15 +48,35 @@ namespace ProyectoFinal
             user.UsrEmail = txtEmail.Text;
             user.UsrPass = txtPass.Text;
 
-            Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
-            string errorMessage = ctrl.ctrlregisterAdmins(user); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
-                                        // "MessageBox" que se mostrará al usuario para avisar de algun error.
-            if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else{
-                // "MessageBox" que se mostrará al usuario para confirmar su registro.
-                MessageBox.Show("Successfully registered user!", "Recorded data.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Clean(); // Llamada al método para limpiar los textbox.
-                ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
+            try{
+                Control ctrl = new Control(); // Creación de un objeto de la clase "Control".
+
+                /*
+                   Declaración de una variable de tipo "string" que almacenará la respuesta generada por el método
+                   "ctrlregistrer()".
+                */
+                string errorMessage = ctrl.ctrlregisterAdmins(user); // Llamada al método "ctrlregisterAdmins", enviandole como parámetro el objeto "user".
+
+                /*
+                   Condición que sólo es válida sí y sólo sí la respuesta tiene algún mensaje. Significa que,
+                   el administrador cometió algún error al registrar los datos de un nuevo usuario.
+                */
+                                             // "MessageBox" que se mostrará al usuario para avisar de algun error.
+                if (errorMessage.Length > 0) MessageBox.Show(errorMessage, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else{
+                    // "MessageBox" que se mostrará al usuario para confirmar su registro.
+                    MessageBox.Show("Successfully registered user!", "Recorded data.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Clean(); // Llamada al método para limpiar los textbox.
+                    ReloadUsersTable(null); // Llamada al método que permite actualizar la tabla.
+                }
+            }
+
+            /*
+               Este "catch" sólo se ejecutará si el usuario deja algún textbox vacío.
+            */
+            catch (Exception ex){
+                // MessageBox a mostrar.
+                MessageBox.Show(ex.Message, "Notice.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

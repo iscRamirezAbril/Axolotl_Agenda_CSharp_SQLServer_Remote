@@ -19,7 +19,7 @@ namespace ProyectoFinal
             // Declaración de variables.
             string servidor = "mercadito.axolotlteam.com"; // Ruta de "MySQL" donde se encuentra nuestro servidor.
             // string puerto = "3306"; // Puerto que tiene "MySQL".
-            string usuario = "Manager"; // Usuario de "MySQL".
+            string usuario = "apiManager"; // Usuario de "MySQL".
             string password = "Admin1234"; // Contraseña del host.
             string bd = "AxoloAgenda"; // Nombre de la Base de Datos.
 
