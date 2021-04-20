@@ -130,6 +130,7 @@ namespace ProyectoFinal
             // Condición que se activará sí y sólo sí alguno de los valores que el administrador intente modificar son los predeterminados de los textboxes.
             else if (usrName == "NAME" || usrLname == "LAST NAME" || usrUsername == "USERNAME" || usrEmail == "EMAIL" || usrPass == "PASSWORD" || Convert.ToString(usridRol) == "ID_ROL")
                 errorMessage = "All fields are required."; // Mensaje de error.
+
             else
                 // Llamada al método "ModifyUsers()".
                 model.ModifyUsers(usrName, usrLname, usrUsername, usrEmail, usrPass, usridRol, usrId);
@@ -205,7 +206,7 @@ namespace ProyectoFinal
                         Session.last_name = userData.UsrLname;
                         Session.email = userData.UsrEmail;
                         Session.password = userData.UsrPass;
-                        Session.id_tipo = userData.UsrRol;
+                        Session.id_rol = userData.UsrRol;
 
                         /*
                            A este objeto se le asigna la variable "username" directamente ya que se envía como

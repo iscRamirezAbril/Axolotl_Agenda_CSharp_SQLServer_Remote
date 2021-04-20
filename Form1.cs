@@ -13,8 +13,8 @@ using FontAwesome.Sharp; // Librería que no ayuda con el diseño.
 namespace ProyectoFinal
 {
     public partial class Form1 : Form{
-        // Declaración de una variable global que permite almacenar el tipo de usuario que inicia sesion.
-        int tipo_usuario;
+        // Declaración de una variable global que permite almacenar el tipo de usuario que inicia sesión.
+        int usrRol;
 
         // --------------------------- //
         // ----- CAMPOS / FIELDS ----- //
@@ -46,16 +46,16 @@ namespace ProyectoFinal
             lblEmail.Text = "Email: " + Session.email;
 
             /*
-              A la variable "tipo_usuario" se le asignará el tipo de "id" correspondiente
+              A la variable "usrRol" se le asignará el tipo de "id" correspondiente
               al usuario que inicia sesión.
             */
-            tipo_usuario = Session.id_tipo;
+            usrRol = Session.id_rol;
 
             /*
               Condición que permitirá visualizar el botón de registro de usuarios sólo a los administradores.
               (Los administradores tienen un id "1").
            */
-            if(tipo_usuario == 1){
+            if(usrRol == 1){
                 this.iconbtnRegisterUsers.Visible = true; // Visualizar el botón de registro de usuarios.
             }
             else{
@@ -173,7 +173,7 @@ namespace ProyectoFinal
             ActivateButton(sender, RGBColors.color6); // Llamada al método para diseño de botón cuando es presionado.
 
             // Condición que sólo es válida sí y sólo sí el usuario presiona el botón "Yes" del MessageBox.
-            if(MessageBox.Show("¿Está seguro? \n¡Tendrá que iniciar sesión de nuevo!", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
+            if(MessageBox.Show("Are you sure you want to exit the application? \nYou'll have to log in again!", "Warning.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
                 Login LoginForm = new Login(); // Creación de un objeto de la clase "Login".
                 LoginForm.Show(); // ".Show()" permitirá mostrar el formulario de inicio de sesión.
                 this.Hide(); // ".Hide() ocultará el formulario actual (RegistrerUsers).
@@ -183,8 +183,7 @@ namespace ProyectoFinal
         // <--- Botón "iconPBoxClose". ---> //
         private void iconPBoxClose_Click(object sender, EventArgs e){
             // Condición que sólo es válida sí y sólo sí el usuario presiona el botón "Yes" del MessageBox.
-            if (MessageBox.Show("¿Está seguro de cerrar la aplicación? \n¡Tendrá que iniciar sesión de nuevo!", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
+            if (MessageBox.Show("Are you sure you want to exit the application? \nYou'll have to log in again!", "Warning.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
                 Login LoginForm = new Login(); // Creación de un objeto de la clase "Login".
                 LoginForm.Show(); // ".Show()" permitirá mostrar el formulario de inicio de sesión.
                 this.Hide(); // ".Hide() ocultará el formulario actual (RegistrerUsers).

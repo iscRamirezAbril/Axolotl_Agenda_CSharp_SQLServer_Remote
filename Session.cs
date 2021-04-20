@@ -12,7 +12,7 @@ namespace ProyectoFinal
     */
     public class Session{
         // Declaración de variables que serán utilizadas como propiedades.
-        public static int id, id_tipo;
+        public static int id, id_rol;
         public static string name, last_name, username, email, password;
     }
 }

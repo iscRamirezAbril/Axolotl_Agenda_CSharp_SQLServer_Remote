@@ -61,6 +61,7 @@ namespace ProyectoFinal
             this.label8 = new System.Windows.Forms.Label();
             this.iconbtnDelete = new FontAwesome.Sharp.IconButton();
             this.btnModify = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.usridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usrRolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usrNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -162,7 +163,7 @@ namespace ProyectoFinal
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridUsers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridUsers.GridColor = System.Drawing.Color.LightSlateGray;
-            this.dataGridUsers.Location = new System.Drawing.Point(12, 223);
+            this.dataGridUsers.Location = new System.Drawing.Point(12, 247);
             this.dataGridUsers.Name = "dataGridUsers";
             this.dataGridUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -179,7 +180,7 @@ namespace ProyectoFinal
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.CadetBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridUsers.Size = new System.Drawing.Size(591, 150);
+            this.dataGridUsers.Size = new System.Drawing.Size(591, 126);
             this.dataGridUsers.TabIndex = 5;
             this.dataGridUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridUsers_CellClick);
             // 
@@ -236,6 +237,7 @@ namespace ProyectoFinal
             // 
             this.groupBUsersData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBUsersData.Controls.Add(this.label9);
             this.groupBUsersData.Controls.Add(this.iconbtnClean);
             this.groupBUsersData.Controls.Add(this.iconbtnSave);
             this.groupBUsersData.Controls.Add(this.txtIdRol);
@@ -255,14 +257,14 @@ namespace ProyectoFinal
             this.groupBUsersData.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBUsersData.Location = new System.Drawing.Point(12, 68);
             this.groupBUsersData.Name = "groupBUsersData";
-            this.groupBUsersData.Size = new System.Drawing.Size(591, 145);
+            this.groupBUsersData.Size = new System.Drawing.Size(591, 173);
             this.groupBUsersData.TabIndex = 9;
             this.groupBUsersData.TabStop = false;
             this.groupBUsersData.Text = "Users data";
             // 
             // iconbtnClean
             // 
-            this.iconbtnClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconbtnClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.iconbtnClean.BackColor = System.Drawing.Color.Khaki;
             this.iconbtnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconbtnClean.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -271,7 +273,7 @@ namespace ProyectoFinal
             this.iconbtnClean.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnClean.IconSize = 25;
             this.iconbtnClean.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconbtnClean.Location = new System.Drawing.Point(489, 104);
+            this.iconbtnClean.Location = new System.Drawing.Point(295, 132);
             this.iconbtnClean.Name = "iconbtnClean";
             this.iconbtnClean.Size = new System.Drawing.Size(96, 30);
             this.iconbtnClean.TabIndex = 24;
@@ -283,7 +285,7 @@ namespace ProyectoFinal
             // 
             // iconbtnSave
             // 
-            this.iconbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.iconbtnSave.BackColor = System.Drawing.Color.PaleGreen;
             this.iconbtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconbtnSave.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -292,7 +294,7 @@ namespace ProyectoFinal
             this.iconbtnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnSave.IconSize = 25;
             this.iconbtnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconbtnSave.Location = new System.Drawing.Point(401, 104);
+            this.iconbtnSave.Location = new System.Drawing.Point(188, 132);
             this.iconbtnSave.Name = "iconbtnSave";
             this.iconbtnSave.Size = new System.Drawing.Size(82, 30);
             this.iconbtnSave.TabIndex = 11;
@@ -326,7 +328,7 @@ namespace ProyectoFinal
             this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPass.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPass.Location = new System.Drawing.Point(6, 98);
+            this.txtPass.Location = new System.Drawing.Point(6, 96);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(220, 20);
             this.txtPass.TabIndex = 15;
@@ -487,7 +489,7 @@ namespace ProyectoFinal
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 104);
+            this.label8.Location = new System.Drawing.Point(4, 102);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(232, 16);
             this.label8.TabIndex = 23;
@@ -527,6 +529,16 @@ namespace ProyectoFinal
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = false;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(458, 98);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 57);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Users Rols:\r\n1 = Admin\r\n2 = Users";
             // 
             // usridDataGridViewTextBoxColumn
             // 
@@ -650,5 +662,6 @@ namespace ProyectoFinal
         private System.Windows.Forms.DataGridViewTextBoxColumn usrEmailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usrPassDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usrConPassDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label9;
     }
 }
