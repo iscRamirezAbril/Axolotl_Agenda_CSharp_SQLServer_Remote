@@ -160,7 +160,7 @@ namespace ProyectoFinal
             txtUsername.Text = "USERNAME";
             txtEmail.Text = "EMAIL";
             txtPass.Text = "PASSWORD";
-            txtIdRol.Text = "ID_TIPO";
+            txtIdRol.Text = "ID_ROL";
         }
 
         // <--------------------------------------> //
