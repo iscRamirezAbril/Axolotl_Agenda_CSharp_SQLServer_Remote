@@ -215,22 +215,22 @@ namespace ProyectoFinal
 
         // <--- Botón "btnRegister" ---> //
         private void btnRegister_Click(object sender, EventArgs e){
-            Users user = new Users(); // Creación de un objeto de la clase "registro_usuarios".
-
-            /* 
-               Asiganción de los datos de los "textbox" del formulario de registro a las propiedades 
-               del objeto "usuario".
-            */
-            user.UsrName = txtSignName.Text;
-            user.UsrLname = txtSignLastName.Text;
-            user.UsrUsername = txtSignUsername.Text;
-            user.UsrEmail = txtSignEmail.Text;
-            user.UsrPass = txtSignPassword.Text;
-            user.UsrConPass = txtConfirmPass.Text;
+            Users user = new Users{ // Creación de un objeto de la clase "User".
+                /* 
+                   Asiganción de los datos de los "textbox" del formulario de registro a las propiedades 
+                   del objeto "user".
+                */
+                UsrName = txtSignName.Text,
+                UsrLname = txtSignLastName.Text,
+                UsrUsername = txtSignUsername.Text,
+                UsrEmail = txtSignEmail.Text,
+                UsrPass = txtSignPassword.Text,
+                UsrConPass = txtConfirmPass.Text
+            };
 
             try{
                 Control control = new Control(); // Creación de un objeto de la clase "Control".
-                string answer = control.ctrlRegister(user); // Llamada al método "ctrlRegistro", enviandole como parámetro el objeto "usuario".
+                string answer = control.ctrlRegister(user); // Llamada al método "ctrlRegister", enviandole como parámetro el objeto "user".
 
                 if (answer.Length > 0){
                     // "MessageBox" que se mostrará al usuario para avisar de algun error.
@@ -304,7 +304,7 @@ namespace ProyectoFinal
             mail.From = new MailAddress("axolotlagenda.helpusers@gmail.com", "Axolotl Agenda");
             mail.Subject = "WELCOME TO AXOLOTL AGENDA! :D"; // "Asunto" del correo.
             // Cuerpo del correo.
-            mail.Body = "¡Bienvenid@ " + txtSignName.Text + " " + txtSignLastName.Text + "!" +
+            mail.Body = "Welcome " + txtSignName.Text + " " + txtSignLastName.Text + "!" +
                 "\nThank you for registering. We hope you enjoy this application." +
                 "\n\nThe purpose of this application is for you to keep a clean and " +
                 "orderly control of your daily activities, offering a clean and discreet interface." +
