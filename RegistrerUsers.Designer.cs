@@ -103,7 +103,6 @@ namespace ProyectoFinal
             this.txtSignName.Size = new System.Drawing.Size(238, 20);
             this.txtSignName.TabIndex = 8;
             this.txtSignName.Text = "NAME";
-            this.txtSignName.TextChanged += new System.EventHandler(this.txtSignName_TextChanged);
             this.txtSignName.Enter += new System.EventHandler(this.txtSignName_Enter);
             this.txtSignName.Leave += new System.EventHandler(this.txtSignName_Leave);
             // 
@@ -129,7 +128,6 @@ namespace ProyectoFinal
             this.txtSignLastName.Size = new System.Drawing.Size(238, 20);
             this.txtSignLastName.TabIndex = 10;
             this.txtSignLastName.Text = "LAST NAME";
-            this.txtSignLastName.TextChanged += new System.EventHandler(this.txtSignLastName_TextChanged);
             this.txtSignLastName.Enter += new System.EventHandler(this.txtSignLastName_Enter);
             this.txtSignLastName.Leave += new System.EventHandler(this.txtSignLastName_Leave);
             // 

@@ -425,39 +425,5 @@ namespace ProyectoFinal
                 */
                 if (Number < 48 || Number > 57) txtIdRol.Text = "";           
         }
-
-        // <--- Evento #21: "TextChanged". ---> //
-        /*
-            Este evento se programó para que en el texbox de nombre "txtName" no puedan
-            escribirse caracteres especiales o números.
-        */
-        private void txtName_TextChanged(object sender, EventArgs e){
-            // Por cada Valor insertado en "txtName", se obtendrá un byte en "Código ASCII".
-            foreach (char Letter in Encoding.ASCII.GetBytes(txtName.Text))
-                /*
-                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
-                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
-                   en "Código ASCII".
-                */
-                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
-                    txtName.Text = ""; // Se vacía el textbox.
-        }
-
-        // <--- Evento #22: "TextChanged". ---> //
-        /*
-            Este evento se programó para que en el texbox de nombre "txtLastName" no puedan
-            escribirse caracteres especiales o números.
-        */
-        private void txtLastName_TextChanged(object sender, EventArgs e){
-            // Por cada Valor insertado en "txtName", se obtendrá un byte en "Código ASCII".
-            foreach (char Letter in Encoding.ASCII.GetBytes(txtName.Text))
-                /*
-                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
-                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
-                   en "Código ASCII".
-                */
-                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
-                    txtName.Text = ""; // Se vacía el textbox.
-        }
     }
 }
