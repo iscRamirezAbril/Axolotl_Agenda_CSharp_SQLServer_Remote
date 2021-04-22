@@ -75,10 +75,26 @@ namespace ProyectoFinal
            escribir letras y espacios en blanco.
          */
         private void txtName_KeyPress(object sender, KeyPressEventArgs e){
-            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
-            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
-            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
+            if (Char.IsLetter(e.KeyChar)){
+                lblName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label1.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)){
+                lblName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label1.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar)){
+                lblName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label1.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else{
+                lblName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                label1.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                e.Handled = true;
+            }
         }
 
         // <--- Evento #2: "KeyPress". ---> //
@@ -87,10 +103,26 @@ namespace ProyectoFinal
            escribir letras y espacios en blanco.
         */
         private void txtLastName_KeyPress(object sender, KeyPressEventArgs e){
-            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
-            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
-            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
+            if (Char.IsLetter(e.KeyChar)){
+                lblLastName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label2.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)){
+                lblLastName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label2.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar)){
+                lblLastName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label2.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else{
+                lblLastName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                label2.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                e.Handled = true;
+            }
         }
 
         // <--- Evento #3: "TextChanged". ---> //
@@ -106,8 +138,15 @@ namespace ProyectoFinal
                    no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 96 - 122] 
                    en "Código ASCII".
                 */
-                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 96 || Letter > 122)
-                    txtEmail.Text = ""; // Se vacía el textbox.
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 96 || Letter > 122){
+                    lblEmail.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    label3.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    // txtEmail.Text = ""; // Se vacía el textbox.
+                }
+                else{
+                    lblEmail.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                    label3.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                }
         }
 
         // <---------------------------------------> //

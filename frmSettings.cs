@@ -99,10 +99,26 @@ namespace ProyectoFinal
            escribir letras y espacios en blanco.
         */
         private void txtEditName_KeyPress(object sender, KeyPressEventArgs e){
-            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
-            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
-            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
+            if (Char.IsLetter(e.KeyChar)){
+                lblEditName.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                txtEditName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)){
+                lblEditName.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                txtEditName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar)){
+                lblEditName.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                txtEditName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else{
+                lblEditName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                txtEditName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                e.Handled = true;
+            }
         }
 
         // <--- Evento #4: "KeyPress". ---> //
@@ -111,10 +127,26 @@ namespace ProyectoFinal
            escribir letras y espacios en blanco.
         */
         private void txtEditLastName_KeyPress(object sender, KeyPressEventArgs e){
-            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
-            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
-            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
+            if (Char.IsLetter(e.KeyChar)){
+                lblEditLastName.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                txtEditLastName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)){
+                lblEditLastName.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                txtEditLastName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar)){
+                lblEditLastName.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                txtEditLastName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else{
+                lblEditLastName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                txtEditLastName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                e.Handled = true;
+            }
         }
 
         // <--- Evento #5: "TextChanged". ---> //
@@ -122,7 +154,8 @@ namespace ProyectoFinal
            Este evento se programó para que en el texbox de nombre "txtEditEmail" no puedan
            escribirse caracteres especiales diferentes a "@" y espacios en blanco.
         */
-        private void txtEditEmail_TextChanged(object sender, EventArgs e){
+        private void txtEditEmail_TextChanged(object sender, EventArgs e)
+        {
             // Por cada Valor insertado en "txtEmail", se obtendrá un byte en "Código ASCII".
             foreach (char Letter in Encoding.ASCII.GetBytes(txtEditEmail.Text))
                 /*
@@ -130,8 +163,39 @@ namespace ProyectoFinal
                    no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 97 - 122] 
                    en "Código ASCII".
                 */
-                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 97 || Letter > 122)
-                    txtEditEmail.Text = ""; // Se vacía el textbox.
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 97 || Letter > 122){
+                    lblEditEmail.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    txtEditEmail.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    // txtEditEmail.Text = ""; // Se vacía el textbox.
+                }
+                else{
+                    lblEditEmail.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                    txtEditEmail.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                }
+        }
+
+        // <--- Evento #6: "TextChanged". ---> //
+        /*
+           Este evento se programó para que en el texbox de nombre "txtEditEmail" no puedan
+           escribirse caracteres especiales diferentes a "_" y espacios en blanco.
+        */
+        private void txtEditUsername_TextChanged(object sender, EventArgs e)
+        {
+            // Por cada Valor insertado en "txtSignUsername", se obtendrá un byte en "Código ASCII".
+            foreach (char Letter in Encoding.ASCII.GetBytes(txtEditUsername.Text))
+                /*
+                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
+                   no cumplen con los siguientes rangos de valores [64, 48 - 57, mayor a 165] en "Código ASCII".
+                */
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter > 165){
+                    lblEditUsername.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    txtEditUsername.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    // txtEditEmail.Text = ""; // Se vacía el textbox.
+                }
+                else{
+                    lblEditUsername.ForeColor = Color.FromArgb(0, 85, 89); // Cambio de color a "Cyan".
+                    txtEditUsername.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                }
         }
 
         // <---------------------------------------> //

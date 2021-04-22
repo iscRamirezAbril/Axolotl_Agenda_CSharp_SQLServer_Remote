@@ -163,7 +163,15 @@ namespace ProyectoFinal
                    Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
                    no cumplen con los siguientes rangos de valores [48 - 57, 64, mayor a 165] en "Código ASCII".
                 */
-                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 90 && Letter < 95 || Letter > 95 && Letter < 97 || Letter > 122 && Letter < 160 || Letter > 165) txtUser.Text = ""; // Se vacía el textbox.
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 90 && Letter < 95 || Letter > 95 && Letter < 97 || Letter > 122 && Letter < 160 || Letter > 165){
+                    txtUser.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    label1.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    // txtSignUsername.Text = ""; // Se vacía el textbox.
+                }
+                else{
+                    txtUser.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                    label1.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Rojo".
+                }
         }
 
         // <---------------------------------------> //

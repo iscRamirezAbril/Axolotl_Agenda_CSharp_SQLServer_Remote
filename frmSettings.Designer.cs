@@ -288,6 +288,7 @@ namespace ProyectoFinal
             this.txtEditUsername.Name = "txtEditUsername";
             this.txtEditUsername.Size = new System.Drawing.Size(220, 20);
             this.txtEditUsername.TabIndex = 19;
+            this.txtEditUsername.TextChanged += new System.EventHandler(this.txtEditUsername_TextChanged);
             // 
             // lblEditUsername
             // 

@@ -130,10 +130,25 @@ namespace ProyectoFinal
            escribir letras y espacios en blanco.
         */
         private void txtName_KeyPress(object sender, KeyPressEventArgs e){
-            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
-            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
-            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
+            if (Char.IsLetter(e.KeyChar)){
+                txtName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label2.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)){
+                txtName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label2.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar)){
+                txtName.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                label2.ForeColor = Color.FromArgb(0, 0, 0); // Cambio de color a "Negro".
+                e.Handled = false;
+            }
+            else{
+                label2.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                e.Handled = true;
+            }
         }
 
         // <---------------------------------------> //

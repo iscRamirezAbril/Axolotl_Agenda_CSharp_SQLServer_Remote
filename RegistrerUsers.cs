@@ -183,10 +183,26 @@ namespace ProyectoFinal
            escribir letras y espacios en blanco.
         */
         private void txtSignName_KeyPress(object sender, KeyPressEventArgs e){
-            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
-            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
-            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
+            if (Char.IsLetter(e.KeyChar)){
+                label1.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris".
+                txtSignName.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)){
+                label1.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris".
+                txtSignName.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar)){
+                label1.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris".
+                txtSignName.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                e.Handled = false;
+            }
+            else{
+                label1.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                txtSignName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                e.Handled = true;
+            }
         }
 
         // <--- Evento #14: "KeyPress". ---> //
@@ -195,10 +211,26 @@ namespace ProyectoFinal
            escribir letras y espacios en blanco.
         */
         private void txtSignLastName_KeyPress(object sender, KeyPressEventArgs e){
-            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
-            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
-            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
+            if (Char.IsLetter(e.KeyChar)){
+                label2.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris".
+                txtSignLastName.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)){
+                label2.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris".
+                txtSignLastName.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar)){
+                label2.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris".
+                txtSignLastName.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                e.Handled = false;
+            }
+            else{
+                label2.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                txtSignLastName.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                e.Handled = true;
+            }
         }
 
         // <--- Evento #15: "TextChanged". ---> //
@@ -213,7 +245,15 @@ namespace ProyectoFinal
                    Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
                    no cumplen con los siguientes rangos de valores [64, 48 - 57, mayor a 165] en "Código ASCII".
                 */
-                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter > 165) txtSignUsername.Text = ""; // Se vacía el textbox.
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter > 165){
+                    txtSignUsername.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    label3.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    // txtSignUsername.Text = ""; // Se vacía el textbox.
+                }
+                else{
+                    txtSignUsername.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                    label3.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris"
+                }
         }
 
         // <--- Evento #16: "TextChanged". ---> //
@@ -229,8 +269,15 @@ namespace ProyectoFinal
                    no se encuentra en el rango de valores entre el [48 - 57, 64, 65 - 90, 97 - 122] 
                    en "Código ASCII".
                 */
-                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 97 || Letter > 122)
-                    txtSignEmail.Text = ""; // Se vacía el textbox.
+                if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter < 65 || Letter > 95 && Letter < 97 || Letter > 122){
+                    txtSignEmail.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    label4.ForeColor = Color.FromArgb(220, 12, 12); // Cambio de color a "Rojo".
+                    // txtSignEmail.Text = ""; // Se vacía el textbox.
+                }
+                else{
+                    txtSignEmail.ForeColor = Color.FromArgb(64, 64, 64); // Cambio de color a "Gris".
+                    label4.ForeColor = Color.FromArgb(86, 101, 115); // Cambio de color a "Gris".
+                }
         }
 
         // <---------------------------------------> //
