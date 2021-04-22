@@ -124,21 +124,16 @@ namespace ProyectoFinal
             txtEnd.Text = dataGridActivities.CurrentRow.Cells[5].Value.ToString();
         }
 
-        // <--- Evento #10: "TextChanged". ---> //
+        // <--- Evento #10: "KeyPress". ---> //
         /*
-           Este evento se programó para que en el texbox de nombre "txtName" no puedan
-           escribirse caracteres especiales o números.
+           Este evento se programó para que en el textbox correspondiente sólo sea válido el
+           escribir letras y espacios en blanco.
         */
-        private void txtName_TextChanged(object sender, EventArgs e){
-            // Por cada Valor insertado en "txtName", se obtendrá un byte en "Código ASCII".
-            foreach (char Letter in Encoding.ASCII.GetBytes(txtName.Text))
-                /*
-                   Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
-                   no se encuentra en el rango de valores entre el [32, 65 - 90, 97 - 122] 
-                   en "Código ASCII".
-                */
-                if (Letter < 32 || Letter > 32 && Letter < 65 || Letter > 90 && Letter < 97 || Letter > 122)
-                    txtName.Text = ""; // Se vacía el textbox.
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e){
+            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
+            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
+            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
         }
 
         // <---------------------------------------> //

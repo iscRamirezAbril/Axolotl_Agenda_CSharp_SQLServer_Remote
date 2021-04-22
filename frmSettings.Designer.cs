@@ -305,6 +305,7 @@ namespace ProyectoFinal
             this.txtEditLastName.Name = "txtEditLastName";
             this.txtEditLastName.Size = new System.Drawing.Size(220, 20);
             this.txtEditLastName.TabIndex = 17;
+            this.txtEditLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEditLastName_KeyPress);
             // 
             // lblEditLastName
             // 
@@ -322,6 +323,7 @@ namespace ProyectoFinal
             this.txtEditName.Name = "txtEditName";
             this.txtEditName.Size = new System.Drawing.Size(220, 20);
             this.txtEditName.TabIndex = 15;
+            this.txtEditName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEditName_KeyPress);
             // 
             // lblEditName
             // 

@@ -100,7 +100,7 @@ namespace ProyectoFinal
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(239, 20);
             this.txtName.TabIndex = 2;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // label1
             // 
@@ -136,7 +136,7 @@ namespace ProyectoFinal
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(239, 20);
             this.txtLastName.TabIndex = 5;
-            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // label2
             // 

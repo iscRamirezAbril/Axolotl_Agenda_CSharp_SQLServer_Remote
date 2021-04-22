@@ -379,7 +379,31 @@ namespace ProyectoFinal
             txtPass.Text = objCtrl.Desencrypt(dataGridUsers.CurrentRow.Cells[6].Value.ToString());
         }
 
-        // <--- Evento #18: "TextChanged". ---> //
+        // <--- Evento #18: "KeyPress". ---> //
+        /*
+           Este evento se programó para que en el textbox correspondiente sólo sea válido el
+           escribir letras y espacios en blanco.
+        */
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e){
+            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
+            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
+            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
+        }
+
+        // <--- Evento #19: "KeyPress". ---> //
+        /*
+           Este evento se programó para que en el textbox correspondiente sólo sea válido el
+           escribir letras y espacios en blanco.
+        */
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e){
+            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
+            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
+            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
+        }
+
+        // <--- Evento #20: "TextChanged". ---> //
         /*
             Este evento se programó para que en el texbox de nombre "txtUsername" no puedan
             escribirse caracteres especiales o letras.
@@ -423,7 +447,7 @@ namespace ProyectoFinal
                    Condición que sólo se activará sí y sólo sí el valor que se escriba en el textbox
                    no se encuentra en el rango de valores entre el [48 - 57] en "Código ASCII".
                 */
-                if (Number < 48 || Number > 57) txtIdRol.Text = "";           
+                if (Number < 49 || Number > 50) txtIdRol.Text = "";           
         }
     }
 }

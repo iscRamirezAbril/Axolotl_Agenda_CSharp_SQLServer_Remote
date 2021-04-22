@@ -177,7 +177,31 @@ namespace ProyectoFinal
             }
         }
 
-        // <--- Evento #13: "TextChanged". ---> //
+        // <--- Evento #13: "KeyPress". ---> //
+        /*
+           Este evento se programó para que en el textbox correspondiente sólo sea válido el
+           escribir letras y espacios en blanco.
+        */
+        private void txtSignName_KeyPress(object sender, KeyPressEventArgs e){
+            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
+            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
+            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
+        }
+
+        // <--- Evento #14: "KeyPress". ---> //
+        /*
+           Este evento se programó para que en el textbox correspondiente sólo sea válido el
+           escribir letras y espacios en blanco.
+        */
+        private void txtSignLastName_KeyPress(object sender, KeyPressEventArgs e){
+            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
+            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
+            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
+        }
+
+        // <--- Evento #15: "TextChanged". ---> //
         /*
            Este evento se programó para que en el texbox de nombre "txtSignUsername" no puedan
            escribirse caracteres especiales o espacios en blanco.
@@ -192,7 +216,7 @@ namespace ProyectoFinal
                 if (Letter < 46 || Letter > 46 && Letter < 48 || Letter > 57 && Letter < 64 || Letter > 64 && Letter > 165) txtSignUsername.Text = ""; // Se vacía el textbox.
         }
 
-        // <--- Evento #14: "TextChanged". ---> //
+        // <--- Evento #16: "TextChanged". ---> //
         /*
            Este evento se programó para que en el texbox de nombre "txtEmail" no puedan
            escribirse caracteres especiales diferentes a "@" y espacios en blanco.

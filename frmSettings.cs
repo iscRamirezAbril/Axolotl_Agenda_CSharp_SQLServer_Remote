@@ -93,7 +93,31 @@ namespace ProyectoFinal
             txtCurrentPass.UseSystemPasswordChar = true; // Esta condición permite que la contraseña no se visualice.
         }
 
-        // <--- Evento #3: "TextChanged". ---> //
+        // <--- Evento #3: "KeyPress". ---> //
+        /*
+           Este evento se programó para que en el textbox correspondiente sólo sea válido el
+           escribir letras y espacios en blanco.
+        */
+        private void txtEditName_KeyPress(object sender, KeyPressEventArgs e){
+            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
+            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
+            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
+        }
+
+        // <--- Evento #4: "KeyPress". ---> //
+        /*
+           Este evento se programó para que en el textbox correspondiente sólo sea válido el
+           escribir letras y espacios en blanco.
+        */
+        private void txtEditLastName_KeyPress(object sender, KeyPressEventArgs e){
+            if (Char.IsLetter(e.KeyChar)) e.Handled = false;
+            else if (Char.IsControl(e.KeyChar)) e.Handled = false;
+            else if (Char.IsSeparator(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
+        }
+
+        // <--- Evento #5: "TextChanged". ---> //
         /*
            Este evento se programó para que en el texbox de nombre "txtEditEmail" no puedan
            escribirse caracteres especiales diferentes a "@" y espacios en blanco.

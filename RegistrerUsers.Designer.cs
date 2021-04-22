@@ -104,6 +104,7 @@ namespace ProyectoFinal
             this.txtSignName.TabIndex = 8;
             this.txtSignName.Text = "NAME";
             this.txtSignName.Enter += new System.EventHandler(this.txtSignName_Enter);
+            this.txtSignName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSignName_KeyPress);
             this.txtSignName.Leave += new System.EventHandler(this.txtSignName_Leave);
             // 
             // label1
@@ -129,6 +130,7 @@ namespace ProyectoFinal
             this.txtSignLastName.TabIndex = 10;
             this.txtSignLastName.Text = "LAST NAME";
             this.txtSignLastName.Enter += new System.EventHandler(this.txtSignLastName_Enter);
+            this.txtSignLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSignLastName_KeyPress);
             this.txtSignLastName.Leave += new System.EventHandler(this.txtSignLastName_Leave);
             // 
             // label2
