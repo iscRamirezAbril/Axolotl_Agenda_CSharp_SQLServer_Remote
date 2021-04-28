@@ -10,11 +10,11 @@ namespace ProyectoFinal
 {
     /*
        Esta clase se creó específicamente para crear la connexión a la base de datos de
-       MySQL. La clase contiene un método de nombre "getConnection", que se encarga de
+       SQL Server. La clase contiene un método de nombre "getConnection", que se encarga de
        realizar dicha conexión.
     */
     class SQLConnection{
-        // <--- Método #1: Conexión a "MySQL". ---> //
+        // <--- Método #1: Conexión a "SQL Server". ---> //
         public static SqlConnection getConnection(){
             // Declaración de variables.
             string servidor = "mercadito.axolotlteam.com"; // Ruta de "MySQL" donde se encuentra nuestro servidor.

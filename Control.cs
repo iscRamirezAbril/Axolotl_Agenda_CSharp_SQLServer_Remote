@@ -8,7 +8,7 @@ namespace ProyectoFinal
 {
     /*
        Esta clase nos ayudará a validar todos aquellos errores posibles que se puedan presentar en los formularios
-       que se conectan a la base de datos de "SQL".
+       que se conectan a la base de datos de "SQL Server".
     */
     class Control{
         // <---------------------------------------> //

@@ -36,7 +36,7 @@ namespace ProyectoFinal
             */
             string sql = "INSERT INTO Users (usrName, usrLname, usrUsername, usrEmail, usrPass, usrRol) VALUES (@usrName, @usrLname, @usrUsername, @usrEmail, @usrPass, @usrRol)";
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
 
             /*
@@ -80,7 +80,7 @@ namespace ProyectoFinal
             */
             string sql = "SELECT usrId FROM Users WHERE usrUsername LIKE @usrUsername";
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@usrUsername", username); // Comando para el campo "usrUsername".
 
@@ -124,7 +124,7 @@ namespace ProyectoFinal
             */
             string sql = "SELECT usrId, usrName, usrLname, usrUsername, usrEmail, usrPass, usrRol FROM Users WHERE usrUsername LIKE @usrUsername";
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@usrUsername", user); // Comando para el campo "usrUsername".
 
@@ -170,7 +170,7 @@ namespace ProyectoFinal
             */
             string sql = "SELECT usrId, usrUsername, usrPass FROM Users WHERE usrUsername LIKE @usrUsername"; ;
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@usrUsername", usuario); // Comando para el campo "usrUsername".
 
@@ -207,7 +207,7 @@ namespace ProyectoFinal
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
             int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
 
@@ -232,7 +232,7 @@ namespace ProyectoFinal
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
             int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
 
@@ -256,7 +256,7 @@ namespace ProyectoFinal
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
             int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
 
@@ -280,7 +280,7 @@ namespace ProyectoFinal
             SqlConnection connection = SQLConnection.getConnection();
             connection.Open();  // Esta función permite abrir la conexión.
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
             int result = command.ExecuteNonQuery(); // Devuelve el número de usuarios actualizados.
 
@@ -304,7 +304,7 @@ namespace ProyectoFinal
             */
             string sql = "INSERT INTO Activities (actName, actType, actStart, actEND, actUserid) VALUES (@actName, @actType, @actStart, @actEnd, @actUserid)";
 
-            // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+            // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
             SqlCommand command = new SqlCommand(sql, connection);
 
             /*
@@ -349,7 +349,7 @@ namespace ProyectoFinal
                 SqlConnection connection = SQLConnection.getConnection();
                 connection.Open(); // Esta función permite abrir la conexión.
 
-                // Se crea un objeto de la clase "MySqlCommand", enviandole como parámetros "sql" y "conexion".
+                // Se crea un objeto de la clase "SqlCommand", enviandole como parámetros "sql" y "connection".
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 reader = command.ExecuteReader(); // ".ExecuteReader() es el método que permite realizar la lectura de datos.
