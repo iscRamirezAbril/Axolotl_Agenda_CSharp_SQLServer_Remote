@@ -216,9 +216,9 @@ namespace ProyectoFinal
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(46, 294);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 26);
+            this.label1.Size = new System.Drawing.Size(171, 26);
             this.label1.TabIndex = 38;
-            this.label1.Text = "Para editar sus datos, es necesario\r\nescribir su contraseña actual.";
+            this.label1.Text = "To edit your data, it is necessary to\r\nyour current password.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtCurrentPass
