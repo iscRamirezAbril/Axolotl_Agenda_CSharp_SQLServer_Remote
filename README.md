@@ -1,6 +1,8 @@
 # Axolotl_Agenda_CSharp_SQLServer_Remote
 
-LOGO PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Application_Logo.png" width = "300"/>
+</p>
 
 ### ----- Descripción. ----- 📄
 Proyecto Final que se entregará en la clase de "Tópicos Avanzados de Programación". Consiste en una agenda donde el usuario podrá llevar un control de sus actividades
@@ -28,47 +30,69 @@ En este Readme podrás encontrar la siguiente información:
 // > Base de Datos < // 
 - Link de descarga: [SQL Server](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
 
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/SSMS_Download.png" width = "500"/>
+</p>
 
 ### ----- Instalación. ----- 📁
 Dentro de este repositorio se encuentra un archivo .rar, que contiene lo siguiente:
 1. Archivo de nombre "setup".
 2. Archivo .exe de nombre "Axolotl_Agenda".
 
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/rar_Archives.png" />
+</p>
 
 Para ejecutar la aplicación, debe realizar lo siguiente:
 1. Dar click al archivo de nombre "Axolotl_Agenda".
 2. Automáticamente se abrirá el archivo "setup" y deberá presionar el botón de "Install".
 
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Setup.png" width = "500"/>
+</p>
 
 3. A esperar un momento, y ¡Listo! La aplicación se ejecutará.
 
 ### ----- Interfaz gráfica. ----- 🖥️
 #### <--- Login --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Login.png" width = "300"/>
+</p>
 
 #### <--- Sign Up --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Sign_Up.png" width = "500"/>
+</p>
 
 #### <--- Forgot Password --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Forgot_Password.png" width = "400"/>
+</p>
 
 #### <--- Main screen --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Main_screen.png" width = "600"/>
+</p>
 
 #### <--- Agenda --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Agenda.png" width = "600"/>
+</p>
 
 #### <--- Users Control --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Users_Control.png" width = "600"/>
+</p>
 
 #### <--- Settings --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Settings.png" width = "600"/>
+</p>
 
 #### <--- Feedback --->
-IMAGEN PENDIENTE...
+<p align="center">
+  <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Feedback.png" width = "600"/>
+</p>
 
 ### ----- Por hacer. ----- 📝
 - [x] Diseño del logo para la aplicación.
@@ -78,8 +102,9 @@ IMAGEN PENDIENTE...
 - [x] Programación de botones y la aplicación en general.
 - [x] Prueba de funcionamiento y detección de errores.
 - [x] Realización de un archivo .exe
-- [ ] Subir folder de capturas al repositorio.
-- [ ] Agregar imágenes al readme.
+- [x] Subir folder de capturas al repositorio.
+- [x] Agregar imágenes al readme.
+- [ ] Agregar descripciones a las imágenes.
 
 ### ----- Sobre el autor. -----
 #### **Nombre.**
