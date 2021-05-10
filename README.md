@@ -32,3 +32,30 @@ En este Readme podrás encontrar la siguiente información:
 IMAGEN PENDIENTE...
 
 ### ----- Instalación. -----
+Dentro de este repositorio se encuentra un archivo .rar, que contiene lo siguiente:
+1. Archivo de nombre "setup".
+2. Archivo .exe de nombre "Axolotl_Agenda".
+
+IMAGEN PENDIENTE...
+
+Para ejecutar la aplicación, debe realizar lo siguiente:
+1. Dar click al archivo de nombre "Axolotl_Agenda".
+2. Automáticamente se abrirá el archivo "setup" y deberá presionar el botón de "Install".
+
+IMAGEN PENDIENTE...
+
+3. A esperar un momento, y ¡Listo! La aplicación se ejecutará.
+
+### ----- Interfaz gráfica. -----
+#### <--- Login --->
+IMAGEN PENDIENTE...
+
+#### <--- Sign Up --->
+IMAGEN PENDIENTE...
+
+#### <--- Forgot Password --->
+IMAGEN PENDIENTE...
+
+#### <--- Main screen --->
+IMAGEN PENDIENTE...
+
