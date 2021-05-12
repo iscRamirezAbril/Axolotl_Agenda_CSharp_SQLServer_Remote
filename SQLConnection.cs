@@ -11,9 +11,9 @@ namespace ProyectoFinal
         // <--- Método #1: Conexión a "SQL Server". ---> //
         public static SqlConnection getConnection(){
             // Declaración de variables.
-            string servidor = "eipril.axolotlteam.com"; // Ruta de "MySQL" donde se encuentra nuestro servidor.
+            string servidor = "eipril.axolotlteam.com"; // Ruta de "SQL" donde se encuentra nuestro servidor.
             // string puerto = "3306"; // Puerto que tiene "MySQL".
-            string usuario = "apiManager"; // Usuario de "MySQL".
+            string usuario = "apiManager"; // Usuario de "SQL".
             string password = "Admin1234"; // Contraseña del host.
             string bd = "AxolotlAgenda"; // Nombre de la Base de Datos.
 
