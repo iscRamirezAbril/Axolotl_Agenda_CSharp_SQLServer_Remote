@@ -59,7 +59,7 @@ Para ejecutar la aplicación, debe realizar lo siguiente:
   <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Login.png" width = "300"/>
 </p>
 
-En esta ventana se le permitirá al usuario "iniciar sesión" a la aplicación, escribiendo su "nombre de usuario (Username)" y "contraseña (Password)". En caso de no tener una cuenta, se le dará click al segundo enlace, el cual abrirá una nueva ventana permitiendo al usuario regitrarse a la apliación.
+En esta ventana se le permitirá al usuario "iniciar sesión" a la aplicación, escribiendo su "nombre de usuario (Username)" y "contraseña (Password)". En caso de no tener una cuenta, se le dará click al segundo enlace, el cual abrirá una nueva ventana permitiendo al usuario registrarse a la aplicación.
 
 Si a un usuario que tiene una cuenta activa se le ha olvidado la contraseña, dará click al primer enlace que se encuentra en la parte inferior de la ventana. Este abrirá una segunda ventana que permitirá llenar un formulario para la recuperación de contraseña.
 
@@ -82,7 +82,7 @@ Una vez que los datos sean correctos y las contraseñas coincidan, se abrirá nu
   <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Forgot_Password.png" width = "400"/>
 </p>
 
-Si se presenta el caso donde el usuario haya olvidado la contraseña de su cuenta, este formulario ayudadrá a recuperarla. Para ello, los datos que debe ingresar son:
+Si se presenta el caso donde el usuario haya olvidado la contraseña de su cuenta, este formulario ayudará a recuperarla. Para ello, los datos que debe ingresar son:
 - Correo electrónico.
 - Nombre de usuario.
 
@@ -94,7 +94,7 @@ Si se presenta el caso donde el usuario haya olvidado la contraseña de su cuent
 </p>
 
 Una vez que el usuario haya escrito sus datos de inicio sesión de manera correcta, la aplicación se abrirá. Se podrá visualizar la siguiente ventana que contiene las siguientes características:
-- Username, Nombre completo y correo electrónico del usuario, así como tambien, el nombre del formulario que se enceuntra abierto, situados en la parte superior.
+- Username, Nombre completo y correo electrónico del usuario, así como también, el nombre del formulario que se encuentra abierto, situados en la parte superior.
 - En la parte "central" de la aplicación, se visualizará su logo.
 - A la "izquierda" se podrán visualizar los botones de las herramientas que la aplicación ofrece, las cuales se describirán más adelante.
 
@@ -103,7 +103,7 @@ Una vez que el usuario haya escrito sus datos de inicio sesión de manera correc
   <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Agenda.png" width = "600"/>
 </p>
 
-Al presionar el primer botón de nombre "Menu / Home", se abrirá el formulario que cumple con la función de una agenda. En el, podrá registrar las actividades que el usuario deseé, proporcionando los siguientes datos:
+Al presionar el primer botón de nombre "Menu / Home", se abrirá el formulario que cumple con la función de una agenda. En él, podrá registrar las actividades que el usuario deseé, proporcionando los siguientes datos:
 - Nombre.
 - Tipo de actividad; las disponibles son las siguientes:
   - Básica.
@@ -121,7 +121,7 @@ Además de agregar actividades a su agenda, también se le permitirá al usuario
   <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Users_Control.png" width = "600"/>
 </p>
 
-Este formulario sólo será visible para los usuarios que son "Administradores". En el, se podrá realizar lo siguiente:
+Este formulario sólo será visible para los usuarios que son "Administradores". En él, se podrá realizar lo siguiente:
 - Visualizar los usuarios que se encuentran actualmente registrados en la aplicación.
 - Registrar nuevos usuarios: en esta opción, se requieren de los mismos datos para el registro de una nueva cuenta, pero con algunos cambios:
   - Se podrá decidir si el usuario será "Administrador" o sólo un "Usuario".
@@ -135,7 +135,7 @@ Este formulario sólo será visible para los usuarios que son "Administradores".
   <img src="https://github.com/iscRamirezAbril/Axolotl_Agenda_CSharp_SQLServer_Remote/blob/master/Pictures/Settings.png" width = "600"/>
 </p>
 
-Cada usuario contará con el botón de "Settings", donde será permitido modificar sus datos de la cuenta. Para ello, tendrá que presionar el link con la leyenda "edit profile". Se abrirá un pequeño formulario del lado "derecho" de la aplicación, donde el usuario podrá modificar su información. Una vez modificada, se pedirá su contraseña actual por cuestiones de seguridad y listo. Tendrá que cerrar sesión y volver a abrirla para que sus datos se actulizen correctamente.
+Cada usuario contará con el botón de "Settings", donde será permitido modificar sus datos de la cuenta. Para ello, tendrá que presionar el link con la leyenda "edit profile". Se abrirá un pequeño formulario del lado "derecho" de la aplicación, donde el usuario podrá modificar su información. Una vez modificada, se pedirá su contraseña actual por cuestiones de seguridad y listo. Tendrá que cerrar sesión y volver a abrirla para que sus datos se actualicen correctamente.
 
 #### <--- Feedback --->
 <p align="center">
